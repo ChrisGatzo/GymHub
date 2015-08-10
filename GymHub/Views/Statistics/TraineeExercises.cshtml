@@ -1,0 +1,29 @@
+﻿@model List<ExerciseViewModel>
+
+@{
+    ViewBag.Title = "TraineeExercises";
+}
+
+<table class="table table-striped table-bordered table-hover" id="trainees-statistics-table">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Oνομ/νυμο</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var exerciseViewModel in Model)
+        {
+            <tr>
+                <td>
+                    <a href="@Url.Action("ExerciseGraph", new { traineeId = ViewBag.TraineeId, exerciseId = exerciseViewModel.Id })">
+                        <span class="glyphicon glyphicon-eye-open"></span>
+                        <span class="sr-only">View</span>
+                    </a>
+                </td>
+                <td>@exerciseViewModel.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>
+

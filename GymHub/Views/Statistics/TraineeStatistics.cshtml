@@ -1,0 +1,53 @@
+﻿@model List<TraineeStatisticViewModel>
+
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="myModalLabel">@Strings.DayStatistics</h4>
+        </div>
+        <div class="modal-body">
+            <strong>Oνομ/νυμο:</strong> @ViewBag.TraineeName&nbsp;&nbsp;&nbsp;<strong>Ημερομηνία:</strong> @DateTime.Now.ToString("dd/MM/yyyy")
+            <br />
+            <br />
+            @using (Html.BeginForm("TraineeStatistics", "Statistics", FormMethod.Post, new { id = "trainee-statistics-form" }))
+            {
+                @Html.AntiForgeryToken()
+                <table class="table table-striped table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Άσκηση</th>
+                            <th>Κιλά</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (var i = 0; i < Model.Count; i++)
+                        {                            
+                            @Html.HiddenFor(m => m[i].Id)
+                            @Html.HiddenFor(m => m[i].TraineeId)
+                            @Html.HiddenFor(m => m[i].ExerciseId)
+                            @Html.HiddenFor(m => m[i].Date)
+                            <tr>
+                                <td>@Model[i].ExerciseName</td>
+                                <td>@Html.EditorFor(m => m[i].Weight, new { htmlAttributes = new { @class = "form-control" } })</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            @*            <div class="form-group">
+                @Html.LabelFor(m => m.TraineeName)
+                @Html.EditorFor(m => m.TraineeName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Date)
+                @Html.EditorFor(m => m.Date, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+            </div>          
+            }*@
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">@Strings.Close</button>
+            <button type="button" class="btn btn-primary" id="save-trainee-statistic">@Strings.Save</button>
+        </div>
+    </div>
+</div>

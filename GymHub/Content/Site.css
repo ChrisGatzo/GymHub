@@ -1,0 +1,44 @@
+﻿body
+{
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content
+{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea
+{
+    max-width: 280px;
+}
+
+.ajax-loader-container
+{
+    background-color: #fff;
+    -webkit-filter: alpha(opacity=60);
+    -moz-filter: alpha(opacity=60);
+    -o-filter: alpha(opacity=60);
+    filter: alpha(opacity=60);
+    -ms-opacity: 0.60;
+    opacity: 0.60;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99999;
+}
+
+.ajax-loader
+{
+    width: 100%;
+    height: 100%;
+    display: block;
+    background: url("./images/windows8spinner.GIF") no-repeat center center transparent;
+}
