@@ -118,45 +118,63 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Close" xml:space="preserve">
-    <value>Κλείσιμο</value>
+    <value>Close</value>
   </data>
   <data name="Comment" xml:space="preserve">
-    <value>Σχόλιο</value>
+    <value>Comment</value>
   </data>
   <data name="Date" xml:space="preserve">
-    <value>Ημερομηνία</value>
+    <value>Date</value>
+  </data>
+  <data name="DateSubmitted" xml:space="preserve">
+    <value>Date Submitted</value>
   </data>
   <data name="DayStatistics" xml:space="preserve">
-    <value>Στατιστικά Ημέρας</value>
+    <value>Day Statistics</value>
   </data>
   <data name="Exercise" xml:space="preserve">
-    <value>Άσκηση</value>
+    <value>Exercise</value>
+  </data>
+  <data name="FileName" xml:space="preserve">
+    <value>File Name</value>
   </data>
   <data name="Files" xml:space="preserve">
-    <value>Αρχεία</value>
+    <value>Files</value>
   </data>
   <data name="ModelNotValid" xml:space="preserve">
-    <value>Η φόρμα δεν είναι έγκυρη.</value>
+    <value>Form is not valid</value>
   </data>
   <data name="Name" xml:space="preserve">
-    <value>Όνομα</value>
+    <value>Name</value>
+  </data>
+  <data name="Nutrition" xml:space="preserve">
+    <value>Nutrition</value>
   </data>
   <data name="Save" xml:space="preserve">
-    <value>Αποθήκευση</value>
+    <value>Save</value>
   </data>
   <data name="Statistics" xml:space="preserve">
-    <value>Στατιστικά</value>
+    <value>Statistics</value>
   </data>
   <data name="SuccessfulFileUpload" xml:space="preserve">
-    <value>Επιτυχής αποθήκευση αρχείου</value>
+    <value>File uploaded successfully</value>
   </data>
   <data name="SuccessfulSave" xml:space="preserve">
     <value>Επιτυχής αποθήκευση</value>
   </data>
+  <data name="TodaysTraining" xml:space="preserve">
+    <value>Today's Training</value>
+  </data>
+  <data name="TraineeExercises" xml:space="preserve">
+    <value>Trainee Exercises</value>
+  </data>
   <data name="UnexpectedErrorOccurred" xml:space="preserve">
-    <value>Σφάλμα διακομιστή. Παρακαλώ επικοινωνήστε με το διαχειριστή του συστήματος.</value>
+    <value>Server error</value>
   </data>
   <data name="Weight" xml:space="preserve">
-    <value>Κιλά</value>
+    <value>Weight</value>
+  </data>
+  <data name="WorkoutOfTheDay" xml:space="preserve">
+    <value>Workout Of The Day</value>
   </data>
 </root>

@@ -12,8 +12,8 @@
         <div class="navbar-collapse collapse" id="nav-collapse">
             <ul class="nav navbar-nav">              
                 <li class="@ViewBag.WorkoutOfTheDayActive">@Html.ActionLink("Workout of the day", "ActiveTrainees", "WorkoutOfTheDay")</li>
-                <li class="@ViewBag.StatisticsActive">@Html.ActionLink("Στατιστικά", "Trainees", "Statistics")</li>
-                <li class="@ViewBag.DietActive">@Html.ActionLink("Διατροφή", "Trainees", "Diet")</li>             
+                <li class="@ViewBag.StatisticsActive">@Html.ActionLink(Strings.Statistics, "Trainees", "Statistics")</li>
+                <li class="@ViewBag.DietActive">@Html.ActionLink(Strings.Nutrition, "Trainees", "Diet")</li>             
             </ul>
             @Html.Partial("_LoginPartial")
         </div>

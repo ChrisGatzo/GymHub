@@ -1,10 +1,10 @@
-﻿@using System.Globalization
-@model WorkoutOfTheDayViewModel
+﻿@model WorkoutOfTheDayViewModel
+
 @{
-    ViewBag.Title = "Workout of the day";
+    ViewBag.Title = @Strings.WorkoutOfTheDay;
 }
 
-<p><strong>Σημερινή προπόνηση: @DateTime.Now.ToString("dddd dd/MM/yyyy", CultureInfo.CurrentCulture)</strong></p>
+<p><strong>@Strings.TodaysTraining: @DateTime.Now.ToString("dddd dd/MM/yyyy")</strong></p>
 
 <button type="button" id="filter">Filter</button>
 
@@ -12,7 +12,7 @@
     <thead>
         <tr>
             <th></th>
-            <th>Oνομ/νυμο</th>
+            <th>@Strings.Name</th>
             @foreach (var exerciseViewModel in Model.ExerciseViewModels)
             {
                 <th>@exerciseViewModel.Name</th>
@@ -23,7 +23,7 @@
     <tfoot>
         <tr>
             <th></th>
-            <th>Oνομ/νυμο</th>
+            <th>@Strings.Name</th>
             @foreach (var exerciseViewModel in Model.ExerciseViewModels)
             {
                 <th>@exerciseViewModel.Name</th>
