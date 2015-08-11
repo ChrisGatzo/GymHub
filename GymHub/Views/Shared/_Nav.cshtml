@@ -7,11 +7,10 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            @Html.ActionLink("Gym Hub", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("Gym Hub", "ActiveTrainees", "WorkoutOfTheDay", new { area = "" }, new { @class = "navbar-brand" })
         </div>
         <div class="navbar-collapse collapse" id="nav-collapse">
-            <ul class="nav navbar-nav">
-                <li class="@ViewBag.HomeActive">@Html.ActionLink("Home", "Index", "Home")</li>
+            <ul class="nav navbar-nav">              
                 <li class="@ViewBag.WorkoutOfTheDayActive">@Html.ActionLink("Workout of the day", "ActiveTrainees", "WorkoutOfTheDay")</li>
                 <li class="@ViewBag.StatisticsActive">@Html.ActionLink("Στατιστικά", "Trainees", "Statistics")</li>
                 <li class="@ViewBag.DietActive">@Html.ActionLink("Διατροφή", "Trainees", "Diet")</li>             

@@ -251,7 +251,6 @@
     <Compile Include="Services\AttachmentService.cs" />
     <Compile Include="Controllers\DietController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Services\DietService.cs" />
     <Compile Include="Services\IAttachmentService.cs" />
     <Compile Include="Services\IDietService.cs" />
