@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using GymHub.DataAccess;
-using GymHub.DataAccess.DomainModels;
+using GymHub.Models;
 using Microsoft.Ajax.Utilities;
 
-namespace GymHub.Business
+namespace GymHub.Service
 {
     public class StatisticsService : IStatisticsService
     {
@@ -16,7 +16,7 @@ namespace GymHub.Business
             _unitOfWork = unitOfWork;
         }
 
-        public List<TraineeStatistic> GetActiveUsersStatistics(List<Trainee> activeUsers, List<Exercise> exercisesOfTheDay)
+        public IEnumerable<TraineeStatistic> GetActiveUsersStatistics(IEnumerable<Trainee> activeUsers, IEnumerable<Exercise> exercisesOfTheDay)
         {
             var traineeStatistics = new List<TraineeStatistic>
             {
@@ -60,7 +60,7 @@ namespace GymHub.Business
             return traineeStatistics;
         }
 
-        public List<TraineeStatistic> GetStatisticsForTrainee(int traineeId, int exerciseId, DateTime dateFrom, DateTime dateTo)
+        public IEnumerable<TraineeStatistic> GetStatisticsForTrainee(int traineeId, int exerciseId, DateTime dateFrom, DateTime dateTo)
         {
             var traineeStatistics = new List<TraineeStatistic>
             {
@@ -118,7 +118,7 @@ namespace GymHub.Business
             return traineeStatistics;
         }
 
-        public List<Exercise> GetExercisesPerformedByTrainee(int traineeId)
+        public IEnumerable<Exercise> GetExercisesPerformedByTrainee(int traineeId)
         {
             var exercises = new List<Exercise>();
 
@@ -134,7 +134,7 @@ namespace GymHub.Business
             return exercises;
         }
 
-        public void UpdateTraineeStatistics(List<TraineeStatistic> traineeStatistics)
+        public void UpdateTraineeStatistics(IEnumerable<TraineeStatistic> traineeStatistics)
         {
             foreach (var traineeStatistic in traineeStatistics)
             {

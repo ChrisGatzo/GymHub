@@ -7,20 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GymHub.DataAccess.DomainModels
+namespace GymHub.Models
 {
+    using System;
     using System.Collections.Generic;
     
-    public partial class AspNetRoles
+    public partial class AspNetUserLogins
     {
-        public AspNetRoles()
-        {
-            this.AspNetUsers = new HashSet<AspNetUsers>();
-        }
+        public string LoginProvider { get; set; }
+        public string ProviderKey { get; set; }
+        public string UserId { get; set; }
     
-        public string Id { get; set; }
-        public string Name { get; set; }
-    
-        public virtual ICollection<AspNetUsers> AspNetUsers { get; set; }
+        public virtual AspNetUsers AspNetUsers { get; set; }
     }
 }

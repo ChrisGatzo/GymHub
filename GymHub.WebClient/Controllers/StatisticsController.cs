@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using AutoMapper;
-using GymHub.Business;
 using GymHub.DataAccess;
-using GymHub.DataAccess.DomainModels;
+using GymHub.Models;
+using GymHub.Service;
 using GymHub.WebClient.Resources;
 using GymHub.WebClient.ViewModelBuilders;
 using GymHub.WebClient.ViewModels;
@@ -13,18 +15,16 @@ namespace GymHub.WebClient.Controllers
 {
     public class StatisticsController : Controller
     {
-        private readonly IUnitOfWork _unitOfWork;
         private readonly IStatisticsService _statisticsService;
         private readonly IScheduleService _scheduleService;
         private readonly ITraineeService _traineeService;
 
 
-        public StatisticsController(IUnitOfWork unitOfWork,
+        public StatisticsController(
             IStatisticsService statisticsService,
             IScheduleService scheduleService,
             ITraineeService traineeService)
         {
-            _unitOfWork = unitOfWork;
             _statisticsService = statisticsService;
             _scheduleService = scheduleService;
             _traineeService = traineeService;
@@ -74,7 +74,7 @@ namespace GymHub.WebClient.Controllers
 
         public ActionResult Trainees()
         {
-            var trainees = _traineeService.GetAllTrainees();
+            var trainees = _traineeService.GetAllTrainees().ToList();
 
             var traineeViewModels = Mapper.Map<List<Trainee>, List<TraineeViewModel>>(trainees);
 
@@ -86,7 +86,7 @@ namespace GymHub.WebClient.Controllers
 
         public ActionResult TraineeExercises(int id)
         {
-            var performedExercises = _statisticsService.GetExercisesPerformedByTrainee(id);
+            var performedExercises = _statisticsService.GetExercisesPerformedByTrainee(id).ToList();
 
             var performedExercisesViewModel = Mapper.Map<List<Exercise>, List<ExerciseViewModel>>(performedExercises);
 
@@ -97,7 +97,7 @@ namespace GymHub.WebClient.Controllers
 
         public ActionResult ExerciseGraph(int traineeId, int exerciseId)
         {
-            var statisticsForTrainee = _statisticsService.GetStatisticsForTrainee(traineeId, exerciseId, new DateTime(), new DateTime());
+            var statisticsForTrainee = _statisticsService.GetStatisticsForTrainee(traineeId, exerciseId, new DateTime(), new DateTime()).ToList();
 
             var statisticsForTraineeViewModel = Mapper.Map<List<TraineeStatistic>, List<TraineeStatisticViewModel>>(statisticsForTrainee);
 

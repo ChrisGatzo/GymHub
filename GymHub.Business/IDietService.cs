@@ -1,4 +1,4 @@
-﻿namespace GymHub.Business
+﻿namespace GymHub.Service
 {
     public interface IDietService
     {

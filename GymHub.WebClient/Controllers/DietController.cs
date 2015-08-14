@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using AutoMapper;
-using GymHub.Business;
-using GymHub.DataAccess.DomainModels;
+using GymHub.Models;
+using GymHub.Service;
 using GymHub.WebClient.Resources;
 using GymHub.WebClient.ViewModels;
 
@@ -23,7 +24,7 @@ namespace GymHub.WebClient.Controllers
 
         public ActionResult Trainees()
         {
-            var trainees = _traineeService.GetAllTrainees();
+            var trainees = _traineeService.GetAllTrainees().ToList();
 
             var traineeViewModels = Mapper.Map<List<Trainee>, List<TraineeViewModel>>(trainees);
 

@@ -7,22 +7,21 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GymHub.DataAccess.DomainModels
+namespace GymHub.Models
 {
+    using System;
     using System.Collections.Generic;
     
-    public partial class Exercise
+    public partial class AspNetRoles
     {
-        public Exercise()
+        public AspNetRoles()
         {
-            this.TraineeStatistics = new HashSet<TraineeStatistic>();
-            this.TrainingSchedules = new HashSet<TrainingSchedule>();
+            this.AspNetUsers = new HashSet<AspNetUsers>();
         }
     
-        public int Id { get; set; }
+        public string Id { get; set; }
         public string Name { get; set; }
     
-        public virtual ICollection<TraineeStatistic> TraineeStatistics { get; set; }
-        public virtual ICollection<TrainingSchedule> TrainingSchedules { get; set; }
+        public virtual ICollection<AspNetUsers> AspNetUsers { get; set; }
     }
 }

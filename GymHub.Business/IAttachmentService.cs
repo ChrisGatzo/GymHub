@@ -1,6 +1,6 @@
 ﻿using System.Web;
 
-namespace GymHub.Business
+namespace GymHub.Service
 {
     public interface IAttachmentService
     {

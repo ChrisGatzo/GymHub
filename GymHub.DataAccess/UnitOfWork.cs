@@ -1,46 +1,66 @@
 ﻿using System;
-using GymHub.DataAccess.DomainModels;
+using GymHub.DataAccess.Repositories;
+using GymHub.Models;
 
 namespace GymHub.DataAccess
 {
     public class UnitOfWork : IUnitOfWork, IDisposable
     {
-        private readonly GymHubDBContext _context = new GymHubDBContext();
-        private GenericRepository<Trainee> _traineeRepository;
-        private GenericRepository<Program> _exerciseRepository;
-        private GenericRepository<TraineeStatistic> _traineeStatisticsRepository;
+        private readonly GymHubDBContext _context;
+        private ITraineeRepository _traineeRepository;
+        private IExerciseRepository _exerciseRepository;
+        private IProgramRepository _programRepository;
+        private ITraineeStatisticsRepository _traineeStatisticsRepository;
 
-        public IGenericRepository<Trainee> TraineeRepository
+        public UnitOfWork()
+        {
+            _context = new GymHubDBContext();
+        }
+
+        public ITraineeRepository TraineeRepository
         {
             get
             {
                 if (_traineeRepository == null)
                 {
-                    _traineeRepository = new GenericRepository<Trainee>(_context);
+                    _traineeRepository = new TraineeRepository(_context);
                 }
                 return _traineeRepository;
             }
         }
 
-        public IGenericRepository<Program> ExerciseRepository
+        public IExerciseRepository ExerciseRepository
         {
             get
             {
+
                 if (_exerciseRepository == null)
                 {
-                    _exerciseRepository = new GenericRepository<Program>(_context);
+                    _exerciseRepository = new ExerciseRepository(_context);
                 }
                 return _exerciseRepository;
             }
         }
 
-        public IGenericRepository<TraineeStatistic> TraineeStatisticsRepository
+        public IProgramRepository ProgramRepository
+        {
+            get
+            {
+                if (_programRepository == null)
+                {
+                    _programRepository = new ProgramRepository(_context);
+                }
+                return _programRepository;
+            }
+        }
+
+        public ITraineeStatisticsRepository TraineeStatisticsRepository
         {
             get
             {
                 if (_traineeStatisticsRepository == null)
                 {
-                    _traineeStatisticsRepository = new GenericRepository<TraineeStatistic>(_context);
+                    _traineeStatisticsRepository = new TraineeStatisticsRepository(_context);
                 }
 
                 return _traineeStatisticsRepository;

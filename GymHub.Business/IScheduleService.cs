@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
-using GymHub.DataAccess.DomainModels;
+using GymHub.Models;
 
-namespace GymHub.Business
+namespace GymHub.Service
 {
     public interface IScheduleService
     {
-        List<Exercise> GetExercisesOfTheDay();
+        IEnumerable<Exercise> GetExercisesOfTheDay();
     }
 }

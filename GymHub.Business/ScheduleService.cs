@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using GymHub.DataAccess;
-using GymHub.DataAccess.DomainModels;
+using GymHub.Models;
 
-namespace GymHub.Business
+namespace GymHub.Service
 {
     public class ScheduleService : IScheduleService
     {
@@ -13,9 +13,9 @@ namespace GymHub.Business
             _unitOfWork = unitOfWork;
         }
 
-        public List<Exercise> GetExercisesOfTheDay()
+        public IEnumerable<Exercise> GetExercisesOfTheDay()
         {
-            // _unitOfWork.exerciseRepository.Get();
+            // _unitOfWork.exerciseRepository.Get().ToList();
 
             var exercisesOfTheDay = new List<Exercise>
             {

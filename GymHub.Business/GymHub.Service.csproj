@@ -7,8 +7,8 @@
     <ProjectGuid>{8742CE65-B3A0-4AD0-9CD2-24328E31A541}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GymHub.Business</RootNamespace>
-    <AssemblyName>GymHub.Business</AssemblyName>
+    <RootNamespace>GymHub.Service</RootNamespace>
+    <AssemblyName>GymHub.Service</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>

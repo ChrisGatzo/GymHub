@@ -448,9 +448,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GymHub.Business\GymHub.Business.csproj">
+    <ProjectReference Include="..\GymHub.Business\GymHub.Service.csproj">
       <Project>{8742CE65-B3A0-4AD0-9CD2-24328E31A541}</Project>
-      <Name>GymHub.Business</Name>
+      <Name>GymHub.Service</Name>
     </ProjectReference>
     <ProjectReference Include="..\GymHub.Common\GymHub.Models.csproj">
       <Project>{58456959-B75D-4484-A2AC-9DD6C35C3411}</Project>

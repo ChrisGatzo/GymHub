@@ -1,24 +1,23 @@
-﻿using System.Web.Mvc;
-using GymHub.Business;
+﻿using System.Linq;
+using System.Web.Mvc;
 using GymHub.DataAccess;
 using GymHub.Models.Helpers;
+using GymHub.Service;
 using GymHub.WebClient.ViewModelBuilders;
 
 namespace GymHub.WebClient.Controllers
 {
     public class WorkoutOfTheDayController : Controller
     {
-        private readonly IUnitOfWork _unitOfWork;
         private readonly ITraineeService _traineeService;
         private readonly IScheduleService _scheduleService;
         private readonly IStatisticsService _statisticsService;
 
-        public WorkoutOfTheDayController(IUnitOfWork unitOfWork,
+        public WorkoutOfTheDayController(
             ITraineeService traineeService,
             IScheduleService scheduleService,
             IStatisticsService statisticsService)
         {
-            _unitOfWork = unitOfWork;
             _traineeService = traineeService;
             _scheduleService = scheduleService;
             _statisticsService = statisticsService;
@@ -29,7 +28,7 @@ namespace GymHub.WebClient.Controllers
             var exercisesOfTheDay = _scheduleService.GetExercisesOfTheDay();
 
             var workoutOfTheDayViewModel =
-                new WorkoutOfTheDayViewModelBuilder(_unitOfWork)
+                new WorkoutOfTheDayViewModelBuilder()
                     .WithValues(exercisesOfTheDay)
                     .Build();
 
@@ -43,12 +42,12 @@ namespace GymHub.WebClient.Controllers
 
             var orderedEnumerable = requestModel.Columns.GetSortedColumns();
 
-            var pagedTrainees = _traineeService.GetPagedTrainees(orderedEnumerable, requestModel.Start, requestModel.Length, requestModel.Search);
-            var exercisesOfTheDay = _scheduleService.GetExercisesOfTheDay();
-            var activeUsersStatistics = _statisticsService.GetActiveUsersStatistics(pagedTrainees, exercisesOfTheDay);
+            var pagedTrainees = _traineeService.GetPagedTrainees(orderedEnumerable, requestModel.Start, requestModel.Length, requestModel.Search).ToList();
+            var exercisesOfTheDay = _scheduleService.GetExercisesOfTheDay().ToList();
+            var activeUsersStatistics = _statisticsService.GetActiveUsersStatistics(pagedTrainees, exercisesOfTheDay).ToList();
 
             var workoutOfTheDayViewModel =
-                new WorkoutOfTheDayViewModelBuilder(_unitOfWork)
+                new WorkoutOfTheDayViewModelBuilder()
                     .WithDataTableRows(pagedTrainees, exercisesOfTheDay, activeUsersStatistics)
                     .Build();
 

@@ -1,12 +1,13 @@
-﻿using GymHub.DataAccess.DomainModels;
+﻿using GymHub.DataAccess.Repositories;
 
 namespace GymHub.DataAccess
 {
     public interface IUnitOfWork
     {
-        IGenericRepository<Trainee> TraineeRepository { get; }
-        IGenericRepository<Program> ExerciseRepository { get; }
-        IGenericRepository<TraineeStatistic> TraineeStatisticsRepository { get; }
+        ITraineeRepository TraineeRepository { get; }
+        IExerciseRepository ExerciseRepository { get; }
+        IProgramRepository ProgramRepository { get; }
+        ITraineeStatisticsRepository TraineeStatisticsRepository { get; }
         void Save();
         void Dispose();
     }

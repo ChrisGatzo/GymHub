@@ -1,6 +1,6 @@
 ﻿using GymHub.DataAccess;
 
-namespace GymHub.Business
+namespace GymHub.Service
 {
     public class DietService : IDietService
     {

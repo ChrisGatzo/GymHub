@@ -7,8 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GymHub.DataAccess.DomainModels
+namespace GymHub.Models
 {
+    using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     

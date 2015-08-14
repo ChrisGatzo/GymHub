@@ -14,7 +14,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{C8990C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymHub.DataAccess", "GymHub.DataAccess\GymHub.DataAccess.csproj", "{79E4C5BC-61B0-4EC5-96FB-0E2F89069649}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymHub.Business", "GymHub.Business\GymHub.Business.csproj", "{8742CE65-B3A0-4AD0-9CD2-24328E31A541}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymHub.Service", "GymHub.Business\GymHub.Service.csproj", "{8742CE65-B3A0-4AD0-9CD2-24328E31A541}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymHub.Models", "GymHub.Common\GymHub.Models.csproj", "{58456959-B75D-4484-A2AC-9DD6C35C3411}"
 EndProject

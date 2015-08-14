@@ -1,24 +1,21 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
-using GymHub.DataAccess;
-using GymHub.DataAccess.DomainModels;
+using GymHub.Models;
 using GymHub.WebClient.ViewModels;
 
 namespace GymHub.WebClient.ViewModelBuilders
 {
     public class WorkoutOfTheDayViewModelBuilder
     {
-        private readonly IUnitOfWork _unitOfWork;
         private readonly WorkoutOfTheDayViewModel _workoutOfTheDayViewModel;
 
-        public WorkoutOfTheDayViewModelBuilder(IUnitOfWork unitOfWork)
+        public WorkoutOfTheDayViewModelBuilder()
         {
-            _unitOfWork = unitOfWork;
             _workoutOfTheDayViewModel = new WorkoutOfTheDayViewModel();
         }
 
-        public WorkoutOfTheDayViewModelBuilder WithValues(List<Exercise> exercisesOfTheDay)
+        public WorkoutOfTheDayViewModelBuilder WithValues(IEnumerable<Exercise> exercisesOfTheDay)
         {
             foreach (var exercise in exercisesOfTheDay)
             {
@@ -28,8 +25,8 @@ namespace GymHub.WebClient.ViewModelBuilders
             return this;
         }
 
-        public WorkoutOfTheDayViewModelBuilder WithDataTableRows(List<Trainee> activeUsers,
-            List<Exercise> exercisesOfTheDay, List<TraineeStatistic> activeUsersStatistics)
+        public WorkoutOfTheDayViewModelBuilder WithDataTableRows(IEnumerable<Trainee> activeUsers,
+             IEnumerable<Exercise> exercisesOfTheDay, List<TraineeStatistic> activeUsersStatistics)
         {
             foreach (var activeUser in activeUsers)
             {

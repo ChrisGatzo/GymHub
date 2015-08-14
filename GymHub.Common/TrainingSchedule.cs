@@ -7,15 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GymHub.DataAccess.DomainModels
+namespace GymHub.Models
 {
-    public partial class AspNetUserClaims
+    using System;
+    using System.Collections.Generic;
+    
+    public partial class TrainingSchedule
     {
         public int Id { get; set; }
-        public string UserId { get; set; }
-        public string ClaimType { get; set; }
-        public string ClaimValue { get; set; }
+        public System.DateTime Date { get; set; }
+        public int ProgramId { get; set; }
+        public int ExerciseId { get; set; }
     
-        public virtual AspNetUsers AspNetUsers { get; set; }
+        public virtual Exercise Exercises { get; set; }
+        public virtual Program Programs { get; set; }
     }
 }

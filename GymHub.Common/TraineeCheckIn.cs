@@ -7,17 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GymHub.DataAccess.DomainModels
+namespace GymHub.Models
 {
-    public partial class TraineeStatistic
+    using System;
+    using System.Collections.Generic;
+    
+    public partial class TraineeCheckIn
     {
         public int Id { get; set; }
         public int TraineeId { get; set; }
-        public int ExerciseId { get; set; }
-        public System.DateTime Date { get; set; }
-        public decimal Weight { get; set; }
+        public System.DateTime CheckInDateTime { get; set; }
     
-        public virtual Exercise Exercises { get; set; }
         public virtual Trainee Trainees { get; set; }
     }
 }

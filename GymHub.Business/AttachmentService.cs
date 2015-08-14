@@ -1,7 +1,7 @@
 using System.Web;
 using GymHub.DataAccess;
 
-namespace GymHub.Business
+namespace GymHub.Service
 {
     public class AttachmentService : IAttachmentService
     {

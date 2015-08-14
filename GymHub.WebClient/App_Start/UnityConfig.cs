@@ -1,6 +1,6 @@
 using System;
-using GymHub.Business;
 using GymHub.DataAccess;
+using GymHub.Service;
 using Microsoft.Practices.Unity;
 
 namespace GymHub.WebClient
