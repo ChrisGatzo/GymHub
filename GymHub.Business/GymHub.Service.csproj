@@ -50,11 +50,9 @@
     <Compile Include="DietService.cs" />
     <Compile Include="IAttachmentService.cs" />
     <Compile Include="IDietService.cs" />
-    <Compile Include="IScheduleService.cs" />
     <Compile Include="IStatisticsService.cs" />
     <Compile Include="ITraineeService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ScheduleService.cs" />
     <Compile Include="StatisticsService.cs" />
     <Compile Include="TraineeService.cs" />
   </ItemGroup>

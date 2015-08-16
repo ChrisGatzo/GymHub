@@ -9,9 +9,18 @@ namespace GymHub.Service
     public interface ITraineeService
     {
         IEnumerable<Trainee> GetActiveTrainees();
-        IEnumerable<Trainee> GetAllTrainees();
+        GetAllTraineesResponse GetAllTrainees(GetAllTraineesRequest request);
         IEnumerable<Trainee> GetPagedTrainees(IOrderedEnumerable<Column> order, int start, int length, Search search);
         int GetTraineesCount();
         int GetFilteredTraineesCount(Search search);
+    }
+
+    public class GetAllTraineesRequest
+    {
+    }
+
+    public class GetAllTraineesResponse
+    {
+        public IEnumerable<Trainee> Trainees { get; set; }
     }
 }

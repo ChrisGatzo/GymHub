@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using AutoMapper;
-using GymHub.DataAccess;
-using GymHub.Models;
 using GymHub.Models.Domain;
 using GymHub.Service;
 using GymHub.WebClient.Resources;
@@ -17,44 +14,42 @@ namespace GymHub.WebClient.Controllers
     public class StatisticsController : Controller
     {
         private readonly IStatisticsService _statisticsService;
-        private readonly IScheduleService _scheduleService;
         private readonly ITraineeService _traineeService;
 
 
         public StatisticsController(
             IStatisticsService statisticsService,
-            IScheduleService scheduleService,
             ITraineeService traineeService)
         {
             _statisticsService = statisticsService;
-            _scheduleService = scheduleService;
             _traineeService = traineeService;
         }
 
         public ActionResult TraineeStatistics(int traineeId)
         {
-            var trainee = new Trainee() { Id = traineeId, FirstName = "Chris", LastName = "Gatzo" };
-            //var trainee = _unitOfWork.TraineeRepository.GetById(traineeId);
-            if (trainee == null)
-            {
-                //TODO: fix to return 404 in ajax call
-                // return new HttpNotFoundResult();
-            }
-
             var traineeStatisticViewModels = new List<TraineeStatisticViewModel>();
-            var exercisesOfTheDay = _scheduleService.GetExercisesOfTheDay();
 
-            foreach (var exercise in exercisesOfTheDay)
+            var request = new GetExercisesOfTheDayRequest
             {
+                WithTraineeStatistics = true,
+                TraineeId = traineeId
+            };
+            var response = _statisticsService.GetExercisesOfTheDay(request);
+
+            foreach (var exercise in response.Exercises)
+            {
+                var traineeStatisticForExercise = response.TraineeStatistics.FirstOrDefault(t => t.ExerciseId == exercise.Id);
+
                 var traineeStatisticViewModel = new TraineeStatisticViewModelBuilder()
                     .WithDefaultValues(exercise)
-                    .WithTraineeId(trainee)
+                    .WithTraineeId(response.Trainee)
+                    .WithWeight(traineeStatisticForExercise != null ? traineeStatisticForExercise.Weight: (decimal?) null)
                     .Build();
 
                 traineeStatisticViewModels.Add(traineeStatisticViewModel);
             }
 
-            ViewBag.TraineeName = trainee.LastName + " " + trainee.FirstName;
+            ViewBag.TraineeName = response.Trainee.LastName + " " + response.Trainee.FirstName;
             return PartialView(traineeStatisticViewModels);
         }
 
@@ -68,17 +63,20 @@ namespace GymHub.WebClient.Controllers
             }
 
             var traineeStatistics = Mapper.Map<List<TraineeStatisticViewModel>, List<TraineeStatistic>>(traineeStatisticViewModels);
-            _statisticsService.UpdateTraineeStatistics(traineeStatistics);
+            var request = new UpdateTraineeStatisticsRequest
+            {
+                TraineeStatistics = traineeStatistics
+            };
+            var response = _statisticsService.UpdateTraineeStatistics(request);
 
             return Json(new { IsValid = true, Message = Strings.SuccessfulSave });
         }
 
         public ActionResult Trainees()
         {
-            var trainees = _traineeService.GetAllTrainees().ToList();
+            var response = _traineeService.GetAllTrainees(new GetAllTraineesRequest());
 
-            var traineeViewModels = Mapper.Map<List<Trainee>, List<TraineeViewModel>>(trainees);
-
+            var traineeViewModels = Mapper.Map<List<Trainee>, List<TraineeViewModel>>(response.Trainees.ToList());
 
             ViewBag.StatisticsActive = "active";
             return View(traineeViewModels);
@@ -87,9 +85,13 @@ namespace GymHub.WebClient.Controllers
 
         public ActionResult TraineeExercises(int id)
         {
-            var performedExercises = _statisticsService.GetExercisesPerformedByTrainee(id).ToList();
+            var request = new GetExercisesPerformedByTraineeRequest
+            {
+                TraineeId = id
+            };
+            var response = _statisticsService.GetExercisesPerformedByTrainee(request);
 
-            var performedExercisesViewModel = Mapper.Map<List<Exercise>, List<ExerciseViewModel>>(performedExercises);
+            var performedExercisesViewModel = Mapper.Map<List<Exercise>, List<ExerciseViewModel>>(response.Exercises.ToList());
 
             ViewBag.StatisticsActive = "active";
             ViewBag.TraineeId = id;

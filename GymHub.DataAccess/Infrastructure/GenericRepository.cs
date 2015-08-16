@@ -40,7 +40,7 @@ namespace GymHub.DataAccess.Infrastructure
                 return orderBy(query);
             }
 
-            return query;
+            return query.ToList();
         }
 
         public virtual TEntity GetById(object id)

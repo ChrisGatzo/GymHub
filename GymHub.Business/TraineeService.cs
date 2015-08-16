@@ -19,7 +19,7 @@ namespace GymHub.Service
 
         public IEnumerable<Trainee> GetActiveTrainees()
         {
-            IEnumerable<Trainee> allTrainees = _unitOfWork.TraineeRepository.Get().ToList();
+            IEnumerable<Trainee> allTrainees = _unitOfWork.TraineeRepository.Get();
 
             return allTrainees;
 
@@ -33,31 +33,17 @@ namespace GymHub.Service
             //return activeUsers;
         }
 
-        public IEnumerable<Trainee> GetAllTrainees()
+        public GetAllTraineesResponse GetAllTrainees(GetAllTraineesRequest request)
         {
-            IEnumerable<Trainee> allTrainees = _unitOfWork.TraineeRepository.Get().ToList();
+            IEnumerable<Trainee> trainees = _unitOfWork.TraineeRepository.Get().ToList();
 
-            return allTrainees;
+            var response = new GetAllTraineesResponse
+            {
+                Trainees = trainees
+            };
 
-            //var allUsers = new List<Trainee>
-            //{
-            //    new Trainee {Id = 1, FirstName = "Christos", LastName = "Gatzo"},
-            //    new Trainee {Id = 2, FirstName = "Seb", LastName = "Kap"},
-            //    new Trainee {Id = 3, FirstName = "Petros", LastName = "Papas"},
-            //    new Trainee {Id = 4, FirstName = "Kostas", LastName = "Tipotas"},
-            //    new Trainee {Id = 5, FirstName = "Giannis", LastName = "Maniatis"},
-            //    new Trainee {Id = 6, FirstName = "Kostas", LastName = "Mitroglou"},
-            //    new Trainee {Id = 7, FirstName = "Alexander", LastName = "D' Agol"},
-            //    new Trainee {Id = 8, FirstName = "Demis", LastName = "Nikolaidis"},
-            //    new Trainee {Id = 9, FirstName = "Ivan", LastName = "Bresevic"},
-            //    new Trainee {Id = 10, FirstName = "Dimitris", LastName = "Melissanidis"},
-            //    new Trainee {Id = 11, FirstName = "Peter", LastName = "Sanders"},
-            //    new Trainee {Id = 12, FirstName = "Nikos", LastName = "Lumperopoulos"},
-            //    new Trainee {Id = 13, FirstName = "Panagiotis", LastName = "Kone"}
-            //};
-
-            //return allUsers;
-        }
+            return response;
+        }     
 
         public IEnumerable<Trainee> GetPagedTrainees(IOrderedEnumerable<Column> order, int start, int length, Search search)
         {

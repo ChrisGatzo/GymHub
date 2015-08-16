@@ -17,11 +17,6 @@ namespace GymHub.DataAccess
         public DbSet<TraineeStatistic> TraineeStatistics { get; set; }
         public DbSet<TrainingSchedule> TrainingSchedules { get; set; }
 
-        public virtual void Commit()
-        {
-            base.SaveChanges();
-        }
-
         //protected override void OnModelCreating(DbModelBuilder modelBuilder)
         //{
 

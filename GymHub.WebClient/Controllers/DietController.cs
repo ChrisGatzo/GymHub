@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Web.Mvc;
 using AutoMapper;
-using GymHub.Models;
 using GymHub.Models.Domain;
 using GymHub.Service;
 using GymHub.WebClient.Resources;
@@ -25,10 +24,9 @@ namespace GymHub.WebClient.Controllers
 
         public ActionResult Trainees()
         {
-            var trainees = _traineeService.GetAllTrainees().ToList();
+            var response = _traineeService.GetAllTrainees(new GetAllTraineesRequest());
 
-            var traineeViewModels = Mapper.Map<List<Trainee>, List<TraineeViewModel>>(trainees);
-
+            var traineeViewModels = Mapper.Map<List<Trainee>, List<TraineeViewModel>>(response.Trainees.ToList());
 
             ViewBag.DietActive = "active";
             return View(traineeViewModels);

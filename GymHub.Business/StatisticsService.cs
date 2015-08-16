@@ -120,25 +120,52 @@ namespace GymHub.Service
             return traineeStatistics;
         }
 
-        public IEnumerable<Exercise> GetExercisesPerformedByTrainee(int traineeId)
+        public GetExercisesOfTheDayResponse GetExercisesOfTheDay(GetExercisesOfTheDayRequest request)
+        {
+            var exercises = _unitOfWork.ExerciseRepository.Get();
+
+            var response = new GetExercisesOfTheDayResponse
+            {
+                Exercises = exercises
+            };
+
+            if (request.WithTraineeStatistics)
+            {
+                response.TraineeStatistics =
+                    _unitOfWork
+                    .TraineeStatisticsRepository
+                    .Get(t => t.TraineeId == request.TraineeId);
+
+                response.Trainee = _unitOfWork.TraineeRepository.GetById(request.TraineeId);
+            }
+
+            return response;
+        }
+
+        public GetExercisesPerformedByTraineeResponse GetExercisesPerformedByTrainee(GetExercisesPerformedByTraineeRequest request)
         {
             var exercises = new List<Exercise>();
 
-            var traineeStatistics = _unitOfWork.TraineeStatisticsRepository.Get(m => m.TraineeId == traineeId);
+            var traineeStatistics = _unitOfWork.TraineeStatisticsRepository.Get(m => m.TraineeId == request.TraineeId);
 
             var exercisesPerformedByUser = traineeStatistics.DistinctBy(m => m.ExerciseId).ToList();
 
             foreach (var exercise in exercisesPerformedByUser)
             {
-                exercises.Add(new Exercise{Id = exercise.Exercises.Id, Name = exercise.Exercises.Name});
+                exercises.Add(new Exercise { Id = exercise.Exercises.Id, Name = exercise.Exercises.Name });
             }
 
-            return exercises;
+            var response = new GetExercisesPerformedByTraineeResponse
+            {
+                Exercises = exercises
+            };
+
+            return response;
         }
 
-        public void UpdateTraineeStatistics(IEnumerable<TraineeStatistic> traineeStatistics)
+        public UpdateTraineeStatisticsResponse UpdateTraineeStatistics(UpdateTraineeStatisticsRequest request)
         {
-            foreach (var traineeStatistic in traineeStatistics)
+            foreach (var traineeStatistic in request.TraineeStatistics)
             {
                 if (traineeStatistic.Id == 0 && traineeStatistic.Weight != 0)
                 {
@@ -152,9 +179,13 @@ namespace GymHub.Service
                 {
                     _unitOfWork.TraineeStatisticsRepository.Delete(traineeStatistic);
                 }
-
-                //_unitOfWork.Save();
             }
+
+            _unitOfWork.Save();
+
+            var response = new UpdateTraineeStatisticsResponse();
+
+            return response;
         }
 
     }

@@ -38,8 +38,7 @@ namespace GymHub.WebClient
 
             // TODO: Register your types here
             container.RegisterType<IUnitOfWork, UnitOfWork>();
-            container.RegisterType<ITraineeService, TraineeService>();
-            container.RegisterType<IScheduleService, ScheduleService>();
+            container.RegisterType<ITraineeService, TraineeService>();     
             container.RegisterType<IStatisticsService, StatisticsService>();
             container.RegisterType<IAttachmentService, AttachmentService>();
             container.RegisterType<IDietService, DietService>();            

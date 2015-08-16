@@ -1,16 +1,15 @@
 using System;
-using GymHub.Models;
 using GymHub.Models.Domain;
 using GymHub.WebClient.ViewModels;
 
 namespace GymHub.WebClient.ViewModelBuilders
 {
     public class TraineeStatisticViewModelBuilder
-    {        
+    {
         private readonly TraineeStatisticViewModel _traineeStatisticViewModel;
 
         public TraineeStatisticViewModelBuilder()
-        {        
+        {
             _traineeStatisticViewModel = new TraineeStatisticViewModel();
         }
 
@@ -25,7 +24,14 @@ namespace GymHub.WebClient.ViewModelBuilders
 
         public TraineeStatisticViewModelBuilder WithTraineeId(Trainee trainee)
         {
-            _traineeStatisticViewModel.TraineeId = trainee.Id;           
+            _traineeStatisticViewModel.TraineeId = trainee.Id;
+
+            return this;
+        }
+
+        public TraineeStatisticViewModelBuilder WithWeight(decimal? weight)
+        {
+            _traineeStatisticViewModel.Weight = weight;
 
             return this;
         }

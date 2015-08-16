@@ -20,23 +20,45 @@ namespace GymHub.DataAccess.Migrations
             //
             context.Trainees.AddOrUpdate(
              t => t.Id,
-              new Trainee {
-                    Id = 1,
-                    FirstName = "Chris",
-                    LastName = "Gatzonis",
-                },
-               new Trainee {
-                    Id = 2,
-                    FirstName = "James",
-                    LastName = "Papadopoulos",
-                },
-                new Trainee {
+              new Trainee
+              {
+                  Id = 1,
+                  FirstName = "Chris",
+                  LastName = "Gatzonis",
+              },
+               new Trainee
+               {
+                   Id = 2,
+                   FirstName = "James",
+                   LastName = "Papadopoulos",
+               },
+                new Trainee
+                {
                     Id = 3,
                     FirstName = "John",
                     LastName = "Smith"
-                }           
+                }
             );
-            
+
+            context.Exercises.AddOrUpdate(
+                e => e.Id,
+                new Exercise
+                {
+                    Id = 1,
+                    Name = "Air squat"
+                },
+                new Exercise
+                {
+                    Id = 2,
+                    Name = "Burpee"
+                },
+                new Exercise
+                {
+                    Id = 3,
+                    Name = "Thruster"
+                }
+            );
+
         }
     }
 }
