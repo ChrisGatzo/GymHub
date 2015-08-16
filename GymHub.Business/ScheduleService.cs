@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using GymHub.DataAccess;
+using GymHub.DataAccess.Infrastructure;
 using GymHub.Models;
 using GymHub.Models.Domain;
 

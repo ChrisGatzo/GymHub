@@ -1,5 +1,5 @@
 using System;
-using GymHub.DataAccess;
+using GymHub.DataAccess.Infrastructure;
 using GymHub.Service;
 using Microsoft.Practices.Unity;
 

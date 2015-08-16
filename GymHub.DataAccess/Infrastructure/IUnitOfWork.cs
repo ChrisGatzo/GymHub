@@ -1,6 +1,6 @@
 ﻿using GymHub.DataAccess.Repositories;
 
-namespace GymHub.DataAccess
+namespace GymHub.DataAccess.Infrastructure
 {
     public interface IUnitOfWork
     {

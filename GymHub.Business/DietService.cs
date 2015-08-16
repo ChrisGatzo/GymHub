@@ -1,4 +1,5 @@
 ﻿using GymHub.DataAccess;
+using GymHub.DataAccess.Infrastructure;
 
 namespace GymHub.Service
 {

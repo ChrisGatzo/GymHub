@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
-using GymHub.Models.Domain;
 
-namespace GymHub.DataAccess
+namespace GymHub.DataAccess.Infrastructure
 {
     public class GenericRepository<TEntity> where TEntity : class
     {

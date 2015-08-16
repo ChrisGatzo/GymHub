@@ -48,10 +48,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GenericRepository.cs" />
+    <Compile Include="Infrastructure\GenericRepository.cs" />
     <Compile Include="GymHubEntities.cs" />
-    <Compile Include="IGenericRepository.cs" />
-    <Compile Include="IUnitOfWork.cs" />
+    <Compile Include="Infrastructure\IGenericRepository.cs" />
+    <Compile Include="Infrastructure\IUnitOfWork.cs" />
     <Compile Include="Migrations\201508161251526_Initial.cs" />
     <Compile Include="Migrations\201508161251526_Initial.Designer.cs">
       <DependentUpon>201508161251526_Initial.cs</DependentUpon>
@@ -66,7 +66,7 @@
     <Compile Include="Repositories\ProgramRepository.cs" />
     <Compile Include="Repositories\TraineeRepository.cs" />
     <Compile Include="Repositories\TraineeStatisticsRepository.cs" />
-    <Compile Include="UnitOfWork.cs" />
+    <Compile Include="Infrastructure\UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

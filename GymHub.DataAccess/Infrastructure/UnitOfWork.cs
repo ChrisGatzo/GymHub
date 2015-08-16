@@ -1,7 +1,7 @@
 ﻿using System;
 using GymHub.DataAccess.Repositories;
 
-namespace GymHub.DataAccess
+namespace GymHub.DataAccess.Infrastructure
 {
     public class UnitOfWork : IUnitOfWork, IDisposable
     {
