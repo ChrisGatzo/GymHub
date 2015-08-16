@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
-using GymHub.Models;
+using GymHub.Models.Domain;
 
 namespace GymHub.DataAccess
 {
     public class GenericRepository<TEntity> where TEntity : class
     {
-        internal GymHubDBContext Context;
+        internal GymHubEntities Context;
         internal DbSet<TEntity> DbSet;
 
-        public GenericRepository(GymHubDBContext context)
+        public GenericRepository(GymHubEntities context)
         {
             Context = context;
             DbSet = Context.Set<TEntity>();

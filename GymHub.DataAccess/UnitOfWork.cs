@@ -1,12 +1,11 @@
 ﻿using System;
 using GymHub.DataAccess.Repositories;
-using GymHub.Models;
 
 namespace GymHub.DataAccess
 {
     public class UnitOfWork : IUnitOfWork, IDisposable
     {
-        private readonly GymHubDBContext _context;
+        private readonly GymHubEntities _context;
         private ITraineeRepository _traineeRepository;
         private IExerciseRepository _exerciseRepository;
         private IProgramRepository _programRepository;
@@ -14,7 +13,7 @@ namespace GymHub.DataAccess
 
         public UnitOfWork()
         {
-            _context = new GymHubDBContext();
+            _context = new GymHubEntities();
         }
 
         public ITraineeRepository TraineeRepository

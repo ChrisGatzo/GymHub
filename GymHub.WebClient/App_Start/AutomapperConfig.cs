@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using GymHub.Models;
+using GymHub.Models.Domain;
 using GymHub.WebClient.ViewModels;
 
 namespace GymHub.WebClient

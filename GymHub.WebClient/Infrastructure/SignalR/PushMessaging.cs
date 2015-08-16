@@ -17,13 +17,13 @@ namespace GymHub.WebClient.Infrastructure.SignalR
 
         private PushMessaging()
         {
-            var connectionString = ConfigurationManager.ConnectionStrings["GymHubDBContext"].ConnectionString;
-            var entityConnectionStringBuilder = new EntityConnectionStringBuilder(connectionString);
-            var connString = entityConnectionStringBuilder.ProviderConnectionString;
+            //var connectionString = ConfigurationManager.ConnectionStrings["GymHubEntities"].ConnectionString;
+            //var entityConnectionStringBuilder = new EntityConnectionStringBuilder(connectionString);
+            //var connString = entityConnectionStringBuilder.ProviderConnectionString;
 
-            const string selectQuery = @"SELECT [Id], [FirstName], [LastName] FROM [dbo].[Trainees]";
-            var newMessageNotifier = new NewMessageNotifier(connString, selectQuery);
-            newMessageNotifier.NewMessage += NewMessageRecieved;
+            //const string selectQuery = @"SELECT [Id], [FirstName], [LastName] FROM [dbo].[Trainees]";
+            //var newMessageNotifier = new NewMessageNotifier(connString, selectQuery);
+            //newMessageNotifier.NewMessage += NewMessageRecieved;
         }
 
         private static void NewMessageRecieved(object sender, SqlNotificationEventArgs e)

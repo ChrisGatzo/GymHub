@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using GymHub.DataAccess;
 using GymHub.Models;
+using GymHub.Models.Domain;
 using Microsoft.Ajax.Utilities;
 
 namespace GymHub.Service

@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using AutoMapper;
 using GymHub.DataAccess;
 using GymHub.Models;
+using GymHub.Models.Domain;
 using GymHub.Service;
 using GymHub.WebClient.Resources;
 using GymHub.WebClient.ViewModelBuilders;

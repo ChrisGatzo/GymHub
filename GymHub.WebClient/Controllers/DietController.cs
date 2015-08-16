@@ -3,6 +3,7 @@ using System.Linq;
 using System.Web.Mvc;
 using AutoMapper;
 using GymHub.Models;
+using GymHub.Models.Domain;
 using GymHub.Service;
 using GymHub.WebClient.Resources;
 using GymHub.WebClient.ViewModels;

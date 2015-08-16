@@ -2,6 +2,7 @@
 using System.Linq;
 using GymHub.DataAccess;
 using GymHub.Models;
+using GymHub.Models.Domain;
 using GymHub.Models.Helpers;
 
 namespace GymHub.Service

@@ -16,7 +16,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymHub.DataAccess", "GymHub
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymHub.Service", "GymHub.Business\GymHub.Service.csproj", "{8742CE65-B3A0-4AD0-9CD2-24328E31A541}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymHub.Models", "GymHub.Common\GymHub.Models.csproj", "{58456959-B75D-4484-A2AC-9DD6C35C3411}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymHub.Models", "GymHub.Models\GymHub.Models.csproj", "{58456959-B75D-4484-A2AC-9DD6C35C3411}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

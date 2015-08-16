@@ -1,10 +1,10 @@
-﻿using GymHub.Models;
+﻿using GymHub.Models.Domain;
 
 namespace GymHub.DataAccess.Repositories
 {
     public class TraineeRepository : GenericRepository<Trainee>, ITraineeRepository
     {
-        public TraineeRepository(GymHubDBContext context)
+        public TraineeRepository(GymHubEntities context)
             : base(context)
         {
 

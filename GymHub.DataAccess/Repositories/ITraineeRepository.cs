@@ -1,4 +1,4 @@
-﻿using GymHub.Models;
+﻿using GymHub.Models.Domain;
 
 namespace GymHub.DataAccess.Repositories
 {

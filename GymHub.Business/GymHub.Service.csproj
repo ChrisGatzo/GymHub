@@ -59,7 +59,7 @@
     <Compile Include="TraineeService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GymHub.Common\GymHub.Models.csproj">
+    <ProjectReference Include="..\GymHub.Models\GymHub.Models.csproj">
       <Project>{58456959-B75D-4484-A2AC-9DD6C35C3411}</Project>
       <Name>GymHub.Models</Name>
     </ProjectReference>

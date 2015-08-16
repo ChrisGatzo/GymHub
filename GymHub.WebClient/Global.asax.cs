@@ -9,7 +9,7 @@ namespace GymHub.WebClient
 {
     public class MvcApplication : System.Web.HttpApplication
     {
-        private readonly string _connectionString = ConfigurationManager.ConnectionStrings["GymHubDBContext"].ConnectionString;
+        //private readonly string _connectionString = ConfigurationManager.ConnectionStrings["GymHubEntities"].ConnectionString;
 
         protected void Application_Start()
         {
@@ -20,15 +20,15 @@ namespace GymHub.WebClient
             AutoMapperConfig.RegisterMappings();
 
             //Start SqlDependency with application initialization
-            var entityConnectionStringBuilder = new EntityConnectionStringBuilder(_connectionString);
-            var providerConnectionString = entityConnectionStringBuilder.ProviderConnectionString;
-            SqlDependency.Start(providerConnectionString);
+            //var entityConnectionStringBuilder = new EntityConnectionStringBuilder(_connectionString);
+           // var providerConnectionString = entityConnectionStringBuilder.ProviderConnectionString;
+//SqlDependency.Start(providerConnectionString);
         }
 
         protected void Application_End()
         {
             //Free the dependency
-            SqlDependency.Stop(_connectionString);
+           // SqlDependency.Stop(_connectionString);
         }
     }
 }

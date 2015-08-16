@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using GymHub.DataAccess;
 using GymHub.Models;
+using GymHub.Models.Domain;
 
 namespace GymHub.Service
 {
