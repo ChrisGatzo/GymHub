@@ -40,14 +40,15 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Web" />
     <Reference Include="WebGrease">
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AttachmentService.cs" />
+    <Compile Include="DataTransferObjects\AttachmentServiceRequestResponse.cs" />
     <Compile Include="DataTransferObjects\StatisticsServiceRequestResponse.cs" />
+    <Compile Include="DataTransferObjects\TraineeServiceRequestResponse.cs" />
     <Compile Include="DietService.cs" />
     <Compile Include="IAttachmentService.cs" />
     <Compile Include="IDietService.cs" />

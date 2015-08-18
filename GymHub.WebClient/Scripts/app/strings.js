@@ -1,5 +1,5 @@
 ﻿var workoutHall = workoutHall || {};
 
 workoutHall.strings = {
-    cannotSubmitEmptyFile: 'Δεν έχετε επιλέξει αρχείο για αποθήκευση'
+    cannotSubmitEmptyFile: 'Please select a file to upload'
 }

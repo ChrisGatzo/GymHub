@@ -1,9 +1,10 @@
-﻿using System.Web;
+﻿using GymHub.Service.DataTransferObjects;
 
 namespace GymHub.Service
 {
     public interface IAttachmentService
     {
-        void UploadFile(int traineeId, HttpPostedFileBase attachmentFile);
+        UploadFileResponse UploadFile(UploadFileRequest request);
     }
+
 }

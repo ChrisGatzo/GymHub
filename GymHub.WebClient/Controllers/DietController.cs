@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using AutoMapper;
 using GymHub.Models.Domain;
 using GymHub.Service;
+using GymHub.Service.DataTransferObjects;
 using GymHub.WebClient.Resources;
 using GymHub.WebClient.ViewModels;
 
@@ -52,7 +53,13 @@ namespace GymHub.WebClient.Controllers
                 return Json(new { IsValid = false, Message = Strings.ModelNotValid });
             }
 
-            _attachmentService.UploadFile(traineeDietViewModel.TraineeId, traineeDietViewModel.AttachmentFile);
+            var request = new UploadFileRequest
+            {
+                TraineeId = traineeDietViewModel.TraineeId,
+                AttachmentFile = traineeDietViewModel.AttachmentFile.InputStream
+            };
+
+            _attachmentService.UploadFile(request);
 
             return Json(new { IsValid = true, Message = Strings.SuccessfulFileUpload });
         }

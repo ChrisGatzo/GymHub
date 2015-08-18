@@ -1,6 +1,5 @@
-using System.Web;
-using GymHub.DataAccess;
 using GymHub.DataAccess.Infrastructure;
+using GymHub.Service.DataTransferObjects;
 
 namespace GymHub.Service
 {
@@ -14,13 +13,16 @@ namespace GymHub.Service
         }
 
 
-        public void UploadFile(int traineeId, HttpPostedFileBase attachmentFile)
-        {          
-            var bytesStream = new byte[attachmentFile.InputStream.Length];
-            attachmentFile.InputStream.Position = 0;
-            attachmentFile.InputStream.Read(bytesStream, 0, (int)attachmentFile.InputStream.Length);
+        public UploadFileResponse UploadFile(UploadFileRequest request)
+        {
+            var bytesStream = new byte[request.AttachmentFile.Length];
+            request.AttachmentFile.Position = 0;
+            request.AttachmentFile.Read(bytesStream, 0, (int)request.AttachmentFile.Length);
 
-            //   _unitOfWork.AttachmentRepository.Insert();
+            //TODO: Insert image to db.
+            //_unitOfWork.AttachmentRepository.Insert();
+
+            return new UploadFileResponse();
         }
     }
 }
