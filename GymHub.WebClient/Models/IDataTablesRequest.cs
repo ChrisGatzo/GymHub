@@ -23,32 +23,36 @@ THE SOFTWARE.
 */
 #endregion Copyright
 
-namespace GymHub.Models.Helpers
+namespace GymHub.WebClient.Models
 {
     /// <summary>
-    /// Implements a default DataTables request.
+    /// Defines a server-side request for use with DataTables.
     /// </summary>
-    public class DefaultDataTablesRequest : IDataTablesRequest
+    /// <remarks>
+    /// Variable syntax does NOT match DataTables names because auto-mapping won't work anyway.
+    /// Use the DataTablesModelBinder or provide your own binder to bind your model with DataTables's request.
+    /// </remarks>
+    public interface IDataTablesRequest
     {
         /// <summary>
-        /// Gets/Sets the draw counter from DataTables.
+        /// Gets and sets the draw counter from client-side to give back on the server's response.
         /// </summary>
-        public virtual int Draw { get; set; }
+        int Draw { get; set; }
         /// <summary>
-        /// Gets/Sets the start record number (jump) for paging.
+        /// Gets and sets the start record number (count) for paging.
         /// </summary>
-        public virtual int Start { get; set; }
+        int Start { get; set; }
         /// <summary>
-        /// Gets/Sets the length of the page (paging).
+        /// Gets and sets the length of the page (max records per page).
         /// </summary>
-        public virtual int Length { get; set; }
+        int Length { get; set; }
         /// <summary>
-        /// Gets/Sets the global search term.
+        /// Gets and sets the global search pagameters.
         /// </summary>
-        public virtual Search Search { get; set; }
+        Search Search { get; set; }
         /// <summary>
-        /// Gets/Sets the column collection.
+        /// Gets and sets the read-only collection of client-side columns with their options and configs.
         /// </summary>
-        public virtual ColumnCollection Columns { get; set; }
+        ColumnCollection Columns { get; set; }
     }
 }

@@ -25,7 +25,7 @@ THE SOFTWARE.
 
 using System;
 
-namespace GymHub.Models.Helpers
+namespace GymHub.WebClient.Models
 {
     /// <summary>
     /// Stores parameters and configs from DataTables search engine.

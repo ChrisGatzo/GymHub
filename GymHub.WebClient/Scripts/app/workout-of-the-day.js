@@ -13,7 +13,7 @@
     oTable = $('#trainees-table').DataTable({
         "processing": true,
         "serverSide": true,
-        "ajax": baseUrl + "WorkoutOfTheDay/ServerSideProcessing",
+        "ajax": baseUrl + "WorkoutOfTheDay/ActiveTraineesPaging",
         responsive: true,
         "columnDefs": [
             { "orderable": false, "width": "4%", "targets": 0 }

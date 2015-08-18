@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Web;
 using GymHub.WebClient.Resources;
@@ -16,6 +16,6 @@ namespace GymHub.WebClient.ViewModels
         public string Comment { get; set; }
 
 
-        public IEnumerable DietViewModels { get; set; }
+        public IEnumerable<DietViewModel> DietViewModels { get; set; }
     }
 }

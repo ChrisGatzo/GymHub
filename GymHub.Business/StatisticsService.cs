@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using GymHub.DataAccess;
 using GymHub.DataAccess.Infrastructure;
-using GymHub.Models;
 using GymHub.Models.Domain;
+using GymHub.Service.DataTransferObjects;
 using Microsoft.Ajax.Utilities;
 
 namespace GymHub.Service
@@ -18,7 +17,7 @@ namespace GymHub.Service
             _unitOfWork = unitOfWork;
         }
 
-        public IEnumerable<TraineeStatistic> GetActiveUsersStatistics(IEnumerable<Trainee> activeUsers, IEnumerable<Exercise> exercisesOfTheDay)
+        public GetActiveUsersStatisticsResponse GetActiveUsersStatistics(GetActiveUsersStatisticsRequest request)
         {
             var traineeStatistics = new List<TraineeStatistic>
             {
@@ -59,10 +58,15 @@ namespace GymHub.Service
                 }
             };
 
-            return traineeStatistics;
+            var response = new GetActiveUsersStatisticsResponse
+            {
+                TraineeStatistics = traineeStatistics
+            };
+
+            return response;
         }
 
-        public IEnumerable<TraineeStatistic> GetStatisticsForTrainee(int traineeId, int exerciseId, DateTime dateFrom, DateTime dateTo)
+        public GetStatisticsForTraineeResponse GetStatisticsForTrainee(GetStatisticsForTraineeRequest request)
         {
             var traineeStatistics = new List<TraineeStatistic>
             {
@@ -117,7 +121,12 @@ namespace GymHub.Service
                 },
             };
 
-            return traineeStatistics;
+            var response = new GetStatisticsForTraineeResponse
+            {
+                TraineeStatistics = traineeStatistics
+            };
+
+            return response;
         }
 
         public GetExercisesOfTheDayResponse GetExercisesOfTheDay(GetExercisesOfTheDayRequest request)

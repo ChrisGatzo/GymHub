@@ -30,7 +30,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace GymHub.Models.Helpers
+namespace GymHub.WebClient.Models
 {
     /// <summary>
     /// Defines a DataTables binder to bind a model with the request parameters from DataTables.

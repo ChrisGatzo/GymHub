@@ -27,7 +27,7 @@ using System;
 using System.Collections.Specialized;
 using System.Linq;
 
-namespace GymHub.Models.Helpers
+namespace GymHub.WebClient.Models
 {
     /// <summary>
     /// Provides extension methods for use with NameValueCollections.

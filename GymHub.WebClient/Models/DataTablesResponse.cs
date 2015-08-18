@@ -25,7 +25,7 @@ THE SOFTWARE.
 
 using System.Collections;
 
-namespace GymHub.Models.Helpers
+namespace GymHub.WebClient.Models
 {
     /// <summary>
     /// Represents a server-side response for use with DataTables.

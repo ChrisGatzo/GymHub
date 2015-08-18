@@ -5,6 +5,7 @@ using System.Web.Mvc;
 using AutoMapper;
 using GymHub.Models.Domain;
 using GymHub.Service;
+using GymHub.Service.DataTransferObjects;
 using GymHub.WebClient.Resources;
 using GymHub.WebClient.ViewModelBuilders;
 using GymHub.WebClient.ViewModels;
@@ -43,7 +44,7 @@ namespace GymHub.WebClient.Controllers
                 var traineeStatisticViewModel = new TraineeStatisticViewModelBuilder()
                     .WithDefaultValues(exercise)
                     .WithTraineeId(response.Trainee)
-                    .WithWeight(traineeStatisticForExercise != null ? traineeStatisticForExercise.Weight: (decimal?) null)
+                    .WithWeight(traineeStatisticForExercise != null ? traineeStatisticForExercise.Weight : (decimal?)null)
                     .Build();
 
                 traineeStatisticViewModels.Add(traineeStatisticViewModel);
@@ -100,9 +101,17 @@ namespace GymHub.WebClient.Controllers
 
         public ActionResult ExerciseGraph(int traineeId, int exerciseId)
         {
-            var statisticsForTrainee = _statisticsService.GetStatisticsForTrainee(traineeId, exerciseId, new DateTime(), new DateTime()).ToList();
+            var request = new GetStatisticsForTraineeRequest
+            {
+                TraineeId = traineeId,
+                ExerciseId = exerciseId,
+                DateFrom = new DateTime(),
+                DateTo = new DateTime()
+            };
 
-            var statisticsForTraineeViewModel = Mapper.Map<List<TraineeStatistic>, List<TraineeStatisticViewModel>>(statisticsForTrainee);
+            var response = _statisticsService.GetStatisticsForTrainee(request);
+
+            var statisticsForTraineeViewModel = Mapper.Map<IEnumerable<TraineeStatistic>, IEnumerable<TraineeStatisticViewModel>>(response.TraineeStatistics);
 
             return View(statisticsForTraineeViewModel);
         }

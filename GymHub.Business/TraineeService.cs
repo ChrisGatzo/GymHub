@@ -1,20 +1,21 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using GymHub.DataAccess;
 using GymHub.DataAccess.Infrastructure;
-using GymHub.Models;
 using GymHub.Models.Domain;
 using GymHub.Models.Helpers;
+using GymHub.Service.DataTransferObjects;
 
 namespace GymHub.Service
 {
     public class TraineeService : ITraineeService
-    {        
+    {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IStatisticsService _statisticsService;
 
-        public TraineeService(IUnitOfWork unitOfWork)
-        {            
+        public TraineeService(IUnitOfWork unitOfWork, IStatisticsService statisticsService)
+        {
             _unitOfWork = unitOfWork;
+            _statisticsService = statisticsService;
         }
 
         public IEnumerable<Trainee> GetActiveTrainees()
@@ -43,50 +44,77 @@ namespace GymHub.Service
             };
 
             return response;
-        }     
+        }
 
-        public IEnumerable<Trainee> GetPagedTrainees(IOrderedEnumerable<Column> order, int start, int length, Search search)
+        public GetPagedTraineesResponse GetPagedTrainees(GetPagedTraineesRequest request)
         {
-            var orderByColumn = int.Parse(order.First().Data);
-            var orderDirection = order.First().SortDirection;
-            var searchValue = search.Value;
+            var pagedTrainees = new List<Trainee>();
+            IEnumerable<Exercise> exercises = new List<Exercise>();
+            IEnumerable<TraineeStatistic> activeUsersStatistics = new List<TraineeStatistic>();
 
-            switch (orderByColumn)
+            switch (request.OrderByColumn)
             {
                 case 1:
                     {
-                        if (orderDirection == Column.OrderDirection.Ascendant)
+                        if (request.OrderDirection == OrderDirection.Ascendant)
                         {
-                            return _unitOfWork.TraineeRepository
-                                .Get(q => q.FirstName.Contains(searchValue) || q.LastName.Contains(searchValue),
-                                     q => q.OrderBy(p => p.LastName))
-                                .Skip(start).Take(length)
+                            pagedTrainees = _unitOfWork.TraineeRepository
+                                .Get(q => q.FirstName.Contains(request.SearchValue) || q.LastName.Contains(request.SearchValue),
+                                    q => q.OrderBy(p => p.LastName))
+                                .Skip(request.Start).Take(request.Length)
                                 .ToList();
                         }
-                        if (orderDirection == Column.OrderDirection.Descendant)
+                        if (request.OrderDirection == OrderDirection.Descendant)
                         {
-                            return _unitOfWork.TraineeRepository
-                             .Get(q => q.FirstName.Contains(searchValue) || q.LastName.Contains(searchValue),
+                            pagedTrainees = _unitOfWork.TraineeRepository
+                             .Get(q => q.FirstName.Contains(request.SearchValue) || q.LastName.Contains(request.SearchValue),
                                   q => q.OrderByDescending(p => p.LastName))
-                             .Skip(start).Take(length)
+                             .Skip(request.Start).Take(request.Length)
                              .ToList();
                         }
+                        break;
                     }
-                    break;
+                default:
+                    {
+                        pagedTrainees = _unitOfWork.TraineeRepository.Get().ToList();
+                        break;
+                    }
             }
 
-            return _unitOfWork.TraineeRepository.Get().ToList();
+            if (request.WithExercises)
+            {
+                exercises = _statisticsService.GetExercisesOfTheDay(new GetExercisesOfTheDayRequest()).Exercises.ToList();
+            }
+
+            if (request.WithStatistics)
+            {
+                var activeUserRequest = new GetActiveUsersStatisticsRequest
+                {
+                    ActiveUsers = pagedTrainees,
+                    ExercisesOfTheDay = exercises
+                };
+                var activeUserResponse = _statisticsService.GetActiveUsersStatistics(activeUserRequest);
+                activeUsersStatistics = activeUserResponse.TraineeStatistics;
+            }
+
+            var recordsTotal = GetTraineesCount();
+            var recordsFiltered = pagedTrainees.Count;
+
+            var response = new GetPagedTraineesResponse
+            {
+                PagedTrainees = pagedTrainees,
+                Exercises = exercises,
+                TraineeStatistics = activeUsersStatistics,
+                RecordsTotal = recordsTotal,
+                RecordsFiltered = recordsFiltered
+            };
+
+            return response;
         }
 
-        public int GetTraineesCount()
+        private int GetTraineesCount()
         {
             return _unitOfWork.TraineeRepository.Get().Count();
-        }
-
-        public int GetFilteredTraineesCount(Search search)
-        {
-            var searchValue = search.Value;
-            return _unitOfWork.TraineeRepository.Get(q => q.FirstName.Contains(searchValue) || q.LastName.Contains(searchValue)).Count();
         }
 
     }

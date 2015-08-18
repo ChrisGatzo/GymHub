@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AttachmentService.cs" />
+    <Compile Include="DataTransferObjects\StatisticsServiceRequestResponse.cs" />
     <Compile Include="DietService.cs" />
     <Compile Include="IAttachmentService.cs" />
     <Compile Include="IDietService.cs" />
@@ -69,6 +70,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

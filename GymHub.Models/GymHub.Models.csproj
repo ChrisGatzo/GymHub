@@ -51,14 +51,7 @@
     <Compile Include="Domain\TraineeCheckIn.cs" />
     <Compile Include="Domain\TraineeStatistic.cs" />
     <Compile Include="Domain\TrainingSchedule.cs" />
-    <Compile Include="Helpers\Column.cs" />
-    <Compile Include="Helpers\ColumnCollections.cs" />
-    <Compile Include="Helpers\DataTablesBinder.cs" />
-    <Compile Include="Helpers\DataTablesResponse.cs" />
-    <Compile Include="Helpers\DefaultDataTablesRequest.cs" />
-    <Compile Include="Helpers\IDataTablesRequest.cs" />
-    <Compile Include="Helpers\NameValueCollectionExtensions.cs" />
-    <Compile Include="Helpers\Search.cs" />
+    <Compile Include="Helpers\OrderDirection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

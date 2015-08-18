@@ -231,6 +231,14 @@
     <Compile Include="Controllers\DietController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\StatisticsController.cs" />
+    <Compile Include="Models\Column.cs" />
+    <Compile Include="Models\ColumnCollections.cs" />
+    <Compile Include="Models\DataTablesBinder.cs" />
+    <Compile Include="Models\DataTablesResponse.cs" />
+    <Compile Include="Models\DefaultDataTablesRequest.cs" />
+    <Compile Include="Models\IDataTablesRequest.cs" />
+    <Compile Include="Models\NameValueCollectionExtensions.cs" />
+    <Compile Include="Models\Search.cs" />
     <Compile Include="ViewModels\DietViewModel.cs" />
     <Compile Include="ViewModels\TraineeDietViewModel.cs" />
     <Compile Include="Infrastructure\Exceptions\JavaScriptException.cs" />
