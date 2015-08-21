@@ -70,7 +70,7 @@ namespace GymHub.WebClient.Controllers
             };
             var response = _statisticsService.UpdateTraineeStatistics(request);
 
-            return Json(new { IsValid = true, Message = Strings.SuccessfulSave });
+            return Json(new { IsValid = true, Message = Strings.StatisticsSuccessfulSave });
         }
 
         public ActionResult Trainees()

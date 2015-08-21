@@ -1,6 +1,6 @@
-﻿var workoutHall = workoutHall || {};
+﻿var gymHub = gymHub || {};
 
-workoutHall.dataService = function () {
+gymHub.dataService = function () {
     var baseUrl = $('body').data('route-url');
 
     var getRequest = 'GET';

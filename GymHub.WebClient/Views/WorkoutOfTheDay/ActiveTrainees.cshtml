@@ -1,12 +1,11 @@
-﻿@model WorkoutOfTheDayViewModel
+﻿@using System.Globalization
+@model WorkoutOfTheDayViewModel
 
 @{
     ViewBag.Title = @Strings.WorkoutOfTheDay;
 }
 
-<p><strong>@Strings.TodaysTraining: @DateTime.Now.ToString("dddd dd/MM/yyyy")</strong></p>
-
-<button type="button" id="filter">Filter</button>
+<p><strong>@Strings.TodaysTraining: @DateTime.Now.ToString("dddd dd/MM/yyyy", CultureInfo.InvariantCulture)</strong></p>
 
 <table class="table table-striped table-bordered table-hover" id="trainees-table">
     <thead>

@@ -9,6 +9,9 @@
 //------------------------------------------------------------------------------
 
 namespace GymHub.WebClient.Resources {
+    using System;
+    
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -175,20 +178,20 @@ namespace GymHub.WebClient.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Statistics saved successfully.
+        /// </summary>
+        public static string StatisticsSuccessfulSave {
+            get {
+                return ResourceManager.GetString("StatisticsSuccessfulSave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to File uploaded successfully.
         /// </summary>
         public static string SuccessfulFileUpload {
             get {
                 return ResourceManager.GetString("SuccessfulFileUpload", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Επιτυχής αποθήκευση.
-        /// </summary>
-        public static string SuccessfulSave {
-            get {
-                return ResourceManager.GetString("SuccessfulSave", resourceCulture);
             }
         }
         

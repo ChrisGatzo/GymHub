@@ -13,7 +13,7 @@ function logError(ex, stack) {
     if (stack != null) out += "\n  at " + stack.join("\n  at ");
 
     // send error message
-    workoutHall.dataService.logJavascriptError(out);   
+    gymHub.dataService.logJavascriptError(out);   
 }
 
 Function.prototype.trace = function () {

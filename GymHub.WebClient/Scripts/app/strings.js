@@ -1,5 +1,5 @@
-﻿var workoutHall = workoutHall || {};
+﻿var gymHub = gymHub || {};
 
-workoutHall.strings = {
+gymHub.strings = {
     cannotSubmitEmptyFile: 'Please select a file to upload'
 }

@@ -156,11 +156,11 @@
   <data name="Statistics" xml:space="preserve">
     <value>Statistics</value>
   </data>
+  <data name="StatisticsSuccessfulSave" xml:space="preserve">
+    <value>Statistics saved successfully</value>
+  </data>
   <data name="SuccessfulFileUpload" xml:space="preserve">
     <value>File uploaded successfully</value>
-  </data>
-  <data name="SuccessfulSave" xml:space="preserve">
-    <value>Επιτυχής αποθήκευση</value>
   </data>
   <data name="TodaysTraining" xml:space="preserve">
     <value>Today's Training</value>
