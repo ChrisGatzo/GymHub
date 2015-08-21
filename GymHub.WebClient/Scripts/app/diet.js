@@ -36,7 +36,7 @@ gymHub.diet = function () {
             gymHub.dataService.uploadDiet($dietUploadForm, uploadOptions);
             return false;
         } else {
-            toastr.warning(gymHub.strings.cannotSubmitEmptyFile);
+            toastr.warning(window.dictionary["cannotSubmitEmptyFile"]);
         }
     },
     uploadOptions = {

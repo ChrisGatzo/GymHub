@@ -61,6 +61,15 @@ namespace GymHub.WebClient.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please select a file to upload.
+        /// </summary>
+        public static string CannotSubmitEmptyFile {
+            get {
+                return ResourceManager.GetString("CannotSubmitEmptyFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Close.
         /// </summary>
         public static string Close {

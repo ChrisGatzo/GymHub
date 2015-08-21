@@ -340,7 +340,6 @@
     <Content Include="Scripts\app\diet.js" />
     <Content Include="Scripts\app\stacktrace.js" />
     <Content Include="Scripts\app\statistics.js" />
-    <Content Include="Scripts\app\strings.js" />
     <Content Include="Scripts\app\workout-of-the-day.js" />
     <Content Include="Scripts\libs\jquery\jquery.signalR-2.1.0.js" />
     <Content Include="Scripts\libs\jquery\jquery.signalR-2.1.0.min.js" />
@@ -442,6 +441,7 @@
     <Content Include="Views\Statistics\Trainees.cshtml" />
     <Content Include="Views\Statistics\TraineeExercises.cshtml" />
     <Content Include="Views\Statistics\ExerciseGraph.cshtml" />
+    <Content Include="Views\Shared\_Dictionary.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Error\" />
