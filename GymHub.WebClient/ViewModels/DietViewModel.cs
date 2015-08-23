@@ -4,7 +4,7 @@ namespace GymHub.WebClient.ViewModels
 {
     public class DietViewModel
     {
-        public int TraineeId { get; set; }
+        public int AthleteId { get; set; }
 
         public string FileName { get; set; }
 

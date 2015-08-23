@@ -1,10 +1,10 @@
 ﻿var gymHub = gymHub || {};
 
 gymHub.diet = function () {
-    var $dietModal = $("#trainee-diet-modal");
+    var $dietModal = $("#athlete-diet-modal");
 
     var initDataTables = function () {
-        $("#trainees-diet-table").dataTable({
+        $("#athletes-diet-table").dataTable({
             "responsive": true,
             "columnDefs": [
                 {
@@ -26,8 +26,8 @@ gymHub.diet = function () {
         $dietModal.modal("show");
     },
     editDiet = function ($buttonClicked) {
-        var traineeId = $buttonClicked.data("trainee-id");
-        gymHub.dataService.editDiet(traineeId, editDietCallback);
+        var athleteId = $buttonClicked.data("athlete-id");
+        gymHub.dataService.editDiet(athleteId, editDietCallback);
     };
 
     var uploadOptions = {
@@ -67,12 +67,12 @@ $(function () {
 
     gymHub.diet.init();
 
-    $("#trainees-diet-table").on("click", ".edit-diet", function () {
+    $("#athletes-diet-table").on("click", ".edit-diet", function () {
         gymHub.diet.editDiet($(this));
     });
 
 
-    $("#trainee-diet-modal").on("click", "#save-diet", function () {
+    $("#athlete-diet-modal").on("click", "#save-diet", function () {
         gymHub.diet.saveDiet();
     });
 

@@ -98,7 +98,7 @@ namespace GymHub.WebClient.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("ActiveTrainees", "WorkoutOfTheDay");
+                    return RedirectToAction("ActiveAthletes", "WorkoutOfTheDay");
                 }
                 else
                 {
@@ -433,7 +433,7 @@ namespace GymHub.WebClient.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut();
-            return RedirectToAction("ActiveTrainees", "WorkoutOfTheDay");
+            return RedirectToAction("ActiveAthletes", "WorkoutOfTheDay");
         }
 
         //
@@ -519,7 +519,7 @@ namespace GymHub.WebClient.Controllers
             }
             else
             {
-                return RedirectToAction("ActiveTrainees", "WorkoutOfTheDay");
+                return RedirectToAction("ActiveAthletes", "WorkoutOfTheDay");
             }
         }
 

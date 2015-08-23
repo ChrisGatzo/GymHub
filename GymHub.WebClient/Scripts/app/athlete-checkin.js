@@ -2,7 +2,7 @@
 
 gymHub.checkin = function () {
     var $selectedRow;
-    var traineesCheckInModal = $("#trainees-checkin-modal");
+    var athletesCheckInModal = $("#athletes-checkin-modal");
 
     var toggleSelection = function ($rowSelected) {
         if ($rowSelected.hasClass("active")) {
@@ -17,7 +17,7 @@ gymHub.checkin = function () {
         return false;
     };
 
-    var selectTrainee = function ($rowSelected) {
+    var selectAthlete = function ($rowSelected) {
         var isSelected = toggleSelection($rowSelected);
 
         if (isSelected) {
@@ -25,31 +25,31 @@ gymHub.checkin = function () {
         }
     };    
 
-    var checkinTraineeCallback = function (response) {
+    var checkinAthleteCallback = function (response) {
         toastr.success(response);
-        traineesCheckInModal.modal("hide");
+        athletesCheckInModal.modal("hide");
     },
-    checkinTrainee = function () {
-        var traineeId = $selectedRow.data("trainee-id");
+    checkinAthlete = function () {
+        var athleteId = $selectedRow.data("athlete-id");
 
-        gymHub.dataService.checkinTrainee(traineeId, checkinTraineeCallback);
+        gymHub.dataService.checkinAthlete(athleteId, checkinAthleteCallback);
     };
 
     return {
-        selectTrainee: selectTrainee,
-        checkinTrainee: checkinTrainee
+        selectAthlete: selectAthlete,
+        checkinAthlete: checkinAthlete
     };
 }();
 
 
 $(function () {
 
-    $("#trainees-checkin-modal").on("click", "tr", function () {
-        gymHub.checkin.selectTrainee($(this));
+    $("#athletes-checkin-modal").on("click", "tr", function () {
+        gymHub.checkin.selectAthlete($(this));
     });
 
-    $("#trainees-checkin-modal").on("click", "#checkin-trainee-btn", function () {
-        gymHub.checkin.checkinTrainee($(this));
+    $("#athletes-checkin-modal").on("click", "#checkin-athlete-btn", function () {
+        gymHub.checkin.checkinAthlete($(this));
     });
 
 });

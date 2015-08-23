@@ -10,18 +10,18 @@ namespace GymHub.WebClient.Controllers
 {
     public class WorkoutOfTheDayController : Controller
     {
-        private readonly ITraineeService _traineeService;
+        private readonly IAthleteService _athleteService;
         private readonly IStatisticsService _statisticsService;
 
         public WorkoutOfTheDayController(
-            ITraineeService traineeService,
+            IAthleteService athleteService,
             IStatisticsService statisticsService)
         {
-            _traineeService = traineeService;
+            _athleteService = athleteService;
             _statisticsService = statisticsService;
         }
 
-        public ActionResult ActiveTrainees()
+        public ActionResult ActiveAthletes()
         {
             var request = new GetExercisesOfTheDayRequest();
             var response = _statisticsService.GetExercisesOfTheDay(request);
@@ -35,7 +35,7 @@ namespace GymHub.WebClient.Controllers
             return View(workoutOfTheDayViewModel);
         }
 
-        public ActionResult ActiveTraineesPaging([ModelBinder(typeof(DataTablesBinder))] IDataTablesRequest requestModel)
+        public ActionResult ActiveAthletesPaging([ModelBinder(typeof(DataTablesBinder))] IDataTablesRequest requestModel)
         {
             requestModel.Draw++;
 
@@ -44,7 +44,7 @@ namespace GymHub.WebClient.Controllers
             var orderDirection = orderedEnumerable.First().SortDirection == 0 ? OrderDirection.Ascendant : OrderDirection.Descendant;
             var searchValue = requestModel.Search.Value;
 
-            var request = new GetFilteredTraineesRequest
+            var request = new GetFilteredAthletesRequest
             {
                 OrderByColumn = orderByColumn,
                 OrderDirection = orderDirection,
@@ -55,11 +55,11 @@ namespace GymHub.WebClient.Controllers
                 WithStatistics = true
             };
 
-            var response = _traineeService.GetFilteredTrainees(request);
+            var response = _athleteService.GetFilteredAthletes(request);
 
             var workoutOfTheDayViewModel =
                 new WorkoutOfTheDayViewModelBuilder()
-                    .WithDataTableRows(response.FilteredTrainees, response.ExercisesOfTheDay.ToList())
+                    .WithDataTableRows(response.FilteredAthletes, response.ExercisesOfTheDay.ToList())
                     .Build();
 
             var recordsTotal = response.RecordsTotal;
@@ -69,11 +69,11 @@ namespace GymHub.WebClient.Controllers
             return Json(new DataTablesResponse(requestModel.Draw, paged, recordsFiltered, recordsTotal), JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult InactiveTrainees()
+        public ActionResult InactiveAthletes()
         {
-            var inactiveTrainees = _traineeService.GetInactiveTrainees(new GetInactiveTraineesRequest()).InactiveTrainees.ToList();
+            var inactiveAthletes = _athleteService.GetInactiveAthletes(new GetInactiveAthletesRequest()).InactiveAthletes.ToList();
 
-            return PartialView(inactiveTrainees);
+            return PartialView(inactiveAthletes);
         }
 
     }

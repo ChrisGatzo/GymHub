@@ -48,15 +48,15 @@
     <Compile Include="AttachmentService.cs" />
     <Compile Include="DataTransferObjects\AttachmentServiceRequestResponse.cs" />
     <Compile Include="DataTransferObjects\StatisticsServiceRequestResponse.cs" />
-    <Compile Include="DataTransferObjects\TraineeServiceRequestResponse.cs" />
+    <Compile Include="DataTransferObjects\AthleteServiceRequestResponse.cs" />
     <Compile Include="DietService.cs" />
     <Compile Include="IAttachmentService.cs" />
     <Compile Include="IDietService.cs" />
     <Compile Include="IStatisticsService.cs" />
-    <Compile Include="ITraineeService.cs" />
+    <Compile Include="IAthleteService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StatisticsService.cs" />
-    <Compile Include="TraineeService.cs" />
+    <Compile Include="AthleteService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GymHub.Models\GymHub.Models.csproj">

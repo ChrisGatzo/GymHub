@@ -8,46 +8,46 @@ using GymHub.Service.DataTransferObjects;
 
 namespace GymHub.Service
 {
-    public class TraineeService : ITraineeService
+    public class AthleteService : IAthleteService
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IStatisticsService _statisticsService;
 
-        public TraineeService(IUnitOfWork unitOfWork, IStatisticsService statisticsService)
+        public AthleteService(IUnitOfWork unitOfWork, IStatisticsService statisticsService)
         {
             _unitOfWork = unitOfWork;
             _statisticsService = statisticsService;
         }
 
-        public GetAllTraineesResponse GetAllTrainees(GetAllTraineesRequest request)
+        public GetAllAthletesResponse GetAllAthletes(GetAllAthletesRequest request)
         {
-            IEnumerable<Trainee> trainees = _unitOfWork.TraineeRepository.Get().ToList();
+            IEnumerable<Athlete> athletes = _unitOfWork.AthleteRepository.Get().ToList();
 
-            var response = new GetAllTraineesResponse
+            var response = new GetAllAthletesResponse
             {
-                Trainees = trainees
+                Athletes = athletes
             };
 
             return response;
         }
 
-        public GetFilteredTraineesResponse GetFilteredTrainees(GetFilteredTraineesRequest request)
+        public GetFilteredAthletesResponse GetFilteredAthletes(GetFilteredAthletesRequest request)
         {
-            var response = new GetFilteredTraineesResponse();
+            var response = new GetFilteredAthletesResponse();
 
             var includeProperties = "";
             if (request.WithStatistics)
             {
-                includeProperties = "TraineeStatistics";
+                includeProperties = "AthleteStatistics";
             }
 
-            var activeTrainees = GetActiveTrainees(includeProperties).Trainees.ToList();
+            var activeAthletes = GetActiveAthletes(includeProperties).Athletes.ToList();
 
-            var filteredTraineesResponse = FilterTrainees(request, activeTrainees);
+            var filteredAthletesResponse = FilterAthletes(request, activeAthletes);
 
-            response.FilteredTrainees = filteredTraineesResponse.PagedTrainees;
-            response.RecordsTotal = filteredTraineesResponse.ActiveTraineesCount;
-            response.RecordsFiltered = filteredTraineesResponse.PagedTraineesCount;
+            response.FilteredAthletes = filteredAthletesResponse.PagedAthletes;
+            response.RecordsTotal = filteredAthletesResponse.ActiveAthletesCount;
+            response.RecordsFiltered = filteredAthletesResponse.PagedAthletesCount;
 
             if (request.WithExercisesOfTheDay)
             {
@@ -57,51 +57,51 @@ namespace GymHub.Service
             return response;
         }
 
-        public CheckInTraineeResponse CheckInTrainee(CheckInTraineeRequest request)
+        public CheckInAthleteResponse CheckInAthlete(CheckInAthleteRequest request)
         {
-            var traineeCheckIn = new TraineeCheckIn
+            var athleteCheckIn = new AthleteCheckIn
             {
-                TraineeId = request.TraineeId,
+                AthleteId = request.AthleteId,
                 CheckInDateTime = DateTime.Now,
             };
 
-            _unitOfWork.TraineeCheckInRepository.Insert(traineeCheckIn);
+            _unitOfWork.AthleteCheckInRepository.Insert(athleteCheckIn);
             _unitOfWork.Save();
 
-            var response = new CheckInTraineeResponse();
+            var response = new CheckInAthleteResponse();
 
             return response;
         }
 
-        public GetInactiveTraineesResponse GetInactiveTrainees(GetInactiveTraineesRequest request)
+        public GetInactiveAthletesResponse GetInactiveAthletes(GetInactiveAthletesRequest request)
         {
-            var inactiveTrainees =
-              _unitOfWork.TraineeRepository
-              .Get(t => t.TraineeCheckIns
+            var inactiveAthletes =
+              _unitOfWork.AthleteRepository
+              .Get(t => t.AthleteCheckIns
                   .All(c => c.CheckInDateTime.Day != DateTime.Today.Day
                       || c.CheckInDateTime.Month != DateTime.Today.Month
                       || c.CheckInDateTime.Year != DateTime.Today.Year));
 
 
-            return new GetInactiveTraineesResponse
+            return new GetInactiveAthletesResponse
             {
-                InactiveTrainees = inactiveTrainees
+                InactiveAthletes = inactiveAthletes
             };
         }
 
 
-        private GetActiveTraineesResponse GetActiveTrainees(string includeProperties = null)
+        private GetActiveAthletesResponse GetActiveAthletes(string includeProperties = null)
         {
-            var activeTrainees =
-                _unitOfWork.TraineeRepository
-                .Get(t => t.TraineeCheckIns
+            var activeAthletes =
+                _unitOfWork.AthleteRepository
+                .Get(t => t.AthleteCheckIns
                     .Any(c => c.CheckInDateTime.Day == DateTime.Today.Day
                         && c.CheckInDateTime.Month == DateTime.Today.Month
                         && c.CheckInDateTime.Year == DateTime.Today.Year), includeProperties: includeProperties);
 
-            var response = new GetActiveTraineesResponse
+            var response = new GetActiveAthletesResponse
             {
-                Trainees = activeTrainees
+                Athletes = activeAthletes
             };
 
             return response;
@@ -112,9 +112,9 @@ namespace GymHub.Service
             return _statisticsService.GetExercisesOfTheDay(new GetExercisesOfTheDayRequest()).Exercises;
         }
        
-        private static FilterTraineesResponse FilterTrainees(GetFilteredTraineesRequest request, List<Trainee> activeTrainees)
+        private static FilterAthletesResponse FilterAthletes(GetFilteredAthletesRequest request, List<Athlete> activeAthletes)
         {
-            var filterTrainees = new List<Trainee>();
+            var filterAthletes = new List<Athlete>();
 
             switch (request.OrderByColumn)
             {
@@ -122,7 +122,7 @@ namespace GymHub.Service
                     {
                         if (request.OrderDirection == OrderDirection.Ascendant)
                         {
-                            filterTrainees = activeTrainees
+                            filterAthletes = activeAthletes
                                 .Where(q => q.FirstName.Contains(request.SearchValue) || q.LastName.Contains(request.SearchValue))
                                 .OrderBy(p => p.LastName)
                                 .Skip(request.Start)
@@ -131,7 +131,7 @@ namespace GymHub.Service
                         }
                         if (request.OrderDirection == OrderDirection.Descendant)
                         {
-                            filterTrainees = activeTrainees
+                            filterAthletes = activeAthletes
                                 .Where(q => q.FirstName.Contains(request.SearchValue) || q.LastName.Contains(request.SearchValue))
                                 .OrderByDescending(p => p.LastName)
                                 .Skip(request.Start)
@@ -142,16 +142,16 @@ namespace GymHub.Service
                     }
                 default:
                     {
-                        filterTrainees = activeTrainees;
+                        filterAthletes = activeAthletes;
                         break;
                     }
             }
 
-            return new FilterTraineesResponse
+            return new FilterAthletesResponse
             {
-                PagedTrainees = filterTrainees,
-                PagedTraineesCount = filterTrainees.Count,
-                ActiveTraineesCount = activeTrainees.Count
+                PagedAthletes = filterAthletes,
+                PagedAthletesCount = filterAthletes.Count,
+                ActiveAthletesCount = activeAthletes.Count
             };
         }
 

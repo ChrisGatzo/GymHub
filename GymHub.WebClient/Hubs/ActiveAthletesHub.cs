@@ -2,11 +2,11 @@
 
 namespace GymHub.WebClient.Hubs
 {
-    public class ActiveTraineesHub : Hub
+    public class ActiveAthletesHub : Hub
     {       
         public static void DispatchToClient()
         {
-            var context = GlobalHost.ConnectionManager.GetHubContext<ActiveTraineesHub>();
+            var context = GlobalHost.ConnectionManager.GetHubContext<ActiveAthletesHub>();
             context.Clients.All.broadcastMessage("Refresh Table");
         }
 

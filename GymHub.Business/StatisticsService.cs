@@ -19,39 +19,39 @@ namespace GymHub.Service
 
         public GetActiveUsersStatisticsResponse GetActiveUsersStatistics(GetActiveUsersStatisticsRequest request)
         {
-            var traineeStatistics = new List<TraineeStatistic>
+            var athleteStatistics = new List<AthleteStatistic>
             {
-                new TraineeStatistic
+                new AthleteStatistic
                 {
-                    TraineeId = 1,
+                    AthleteId = 1,
                     ExerciseId = 1,
                     Weight = 20,
                     Date = new DateTime(2014, 2, 2)
                 },
-                new TraineeStatistic
+                new AthleteStatistic
                 {
-                    TraineeId = 1,
+                    AthleteId = 1,
                     ExerciseId = 2,
                     Weight = 30,
                     Date = new DateTime(2014, 2, 2)
                 },
-                new TraineeStatistic
+                new AthleteStatistic
                 {
-                    TraineeId = 2,
+                    AthleteId = 2,
                     ExerciseId = 1,
                     Weight = 25,
                     Date = new DateTime(2014, 2, 2)
                 },
-                new TraineeStatistic
+                new AthleteStatistic
                 {
-                    TraineeId = 2,
+                    AthleteId = 2,
                     ExerciseId = 2,
                     Weight = 25,
                     Date = new DateTime(2014, 2, 2)
                 },
-                new TraineeStatistic
+                new AthleteStatistic
                 {
-                    TraineeId = 2,
+                    AthleteId = 2,
                     ExerciseId = 3,
                     Weight = 40,
                     Date = new DateTime(2014, 1, 28)
@@ -60,70 +60,70 @@ namespace GymHub.Service
 
             var response = new GetActiveUsersStatisticsResponse
             {
-                TraineeStatistics = traineeStatistics
+                AthleteStatistics = athleteStatistics
             };
 
             return response;
         }
 
-        public GetStatisticsForTraineeResponse GetStatisticsForTrainee(GetStatisticsForTraineeRequest request)
+        public GetStatisticsForAthleteResponse GetStatisticsForAthlete(GetStatisticsForAthleteRequest request)
         {
-            var traineeStatistics = new List<TraineeStatistic>
+            var athleteStatistics = new List<AthleteStatistic>
             {
-                new TraineeStatistic
+                new AthleteStatistic
                 {
-                    TraineeId = 1,
+                    AthleteId = 1,
                     ExerciseId = 1,
                     Weight = 20,
                     Date = new DateTime(2014, 1, 5)
                 },
-                new TraineeStatistic
+                new AthleteStatistic
                 {
-                    TraineeId = 1,
+                    AthleteId = 1,
                     ExerciseId = 1,
                     Weight = 25,
                     Date = new DateTime(2014, 1, 8)
                 },
-                new TraineeStatistic
+                new AthleteStatistic
                 {
-                    TraineeId = 1,
+                    AthleteId = 1,
                     ExerciseId = 1,
                     Weight = 25,
                     Date = new DateTime(2014, 1, 18)
                 },
-                new TraineeStatistic
+                new AthleteStatistic
                 {
-                    TraineeId = 1,
+                    AthleteId = 1,
                     ExerciseId = 1,
                     Weight = 30,
                     Date = new DateTime(2014, 1, 30)
                 },
-                new TraineeStatistic
+                new AthleteStatistic
                 {
-                    TraineeId = 1,
+                    AthleteId = 1,
                     ExerciseId = 2,
                     Weight = 25,
                     Date = new DateTime(2014, 1, 5)
                 },
-                new TraineeStatistic
+                new AthleteStatistic
                 {
-                    TraineeId = 1,
+                    AthleteId = 1,
                     ExerciseId = 2,
                     Weight = 30,
                     Date = new DateTime(2014, 1, 7)
                 },
-                new TraineeStatistic
+                new AthleteStatistic
                 {
-                    TraineeId = 1,
+                    AthleteId = 1,
                     ExerciseId = 3,
                     Weight = 14,
                     Date = new DateTime(2014, 1, 15)
                 },
             };
 
-            var response = new GetStatisticsForTraineeResponse
+            var response = new GetStatisticsForAthleteResponse
             {
-                TraineeStatistics = traineeStatistics
+                AthleteStatistics = athleteStatistics
             };
 
             return response;
@@ -138,33 +138,33 @@ namespace GymHub.Service
                 Exercises = exercises
             };
 
-            if (request.WithTraineeStatistics)
+            if (request.WithAthleteStatistics)
             {
-                response.TraineeStatistics =
+                response.AthleteStatistics =
                     _unitOfWork
-                    .TraineeStatisticsRepository
-                    .Get(t => t.TraineeId == request.TraineeId);
+                    .AthleteStatisticsRepository
+                    .Get(t => t.AthleteId == request.AthleteId);
 
-                response.Trainee = _unitOfWork.TraineeRepository.GetById(request.TraineeId);
+                response.Athlete = _unitOfWork.AthleteRepository.GetById(request.AthleteId);
             }
 
             return response;
         }
 
-        public GetExercisesPerformedByTraineeResponse GetExercisesPerformedByTrainee(GetExercisesPerformedByTraineeRequest request)
+        public GetExercisesPerformedByAthleteResponse GetExercisesPerformedByAthlete(GetExercisesPerformedByAthleteRequest request)
         {
             var exercises = new List<Exercise>();
 
-            var traineeStatistics = _unitOfWork.TraineeStatisticsRepository.Get(m => m.TraineeId == request.TraineeId);
+            var athleteStatistics = _unitOfWork.AthleteStatisticsRepository.Get(m => m.AthleteId == request.AthleteId);
 
-            var exercisesPerformedByUser = traineeStatistics.DistinctBy(m => m.ExerciseId).ToList();
+            var exercisesPerformedByUser = athleteStatistics.DistinctBy(m => m.ExerciseId).ToList();
 
             foreach (var exercise in exercisesPerformedByUser)
             {
                 exercises.Add(new Exercise { Id = exercise.Exercises.Id, Name = exercise.Exercises.Name });
             }
 
-            var response = new GetExercisesPerformedByTraineeResponse
+            var response = new GetExercisesPerformedByAthleteResponse
             {
                 Exercises = exercises
             };
@@ -172,27 +172,27 @@ namespace GymHub.Service
             return response;
         }
 
-        public UpdateTraineeStatisticsResponse UpdateTraineeStatistics(UpdateTraineeStatisticsRequest request)
+        public UpdateAthleteStatisticsResponse UpdateAthleteStatistics(UpdateAthleteStatisticsRequest request)
         {
-            foreach (var traineeStatistic in request.TraineeStatistics)
+            foreach (var athleteStatistic in request.AthleteStatistics)
             {
-                if (traineeStatistic.Id == 0 && traineeStatistic.Weight != 0)
+                if (athleteStatistic.Id == 0 && athleteStatistic.Weight != 0)
                 {
-                    _unitOfWork.TraineeStatisticsRepository.Insert(traineeStatistic);
+                    _unitOfWork.AthleteStatisticsRepository.Insert(athleteStatistic);
                 }
-                else if (traineeStatistic.Id != 0 && traineeStatistic.Weight != 0)
+                else if (athleteStatistic.Id != 0 && athleteStatistic.Weight != 0)
                 {
-                    _unitOfWork.TraineeStatisticsRepository.Update(traineeStatistic);
+                    _unitOfWork.AthleteStatisticsRepository.Update(athleteStatistic);
                 }
-                else if (traineeStatistic.Id != 0 && traineeStatistic.Weight == 0)
+                else if (athleteStatistic.Id != 0 && athleteStatistic.Weight == 0)
                 {
-                    _unitOfWork.TraineeStatisticsRepository.Delete(traineeStatistic);
+                    _unitOfWork.AthleteStatisticsRepository.Delete(athleteStatistic);
                 }
             }
 
             _unitOfWork.Save();
 
-            var response = new UpdateTraineeStatisticsResponse();
+            var response = new UpdateAthleteStatisticsResponse();
 
             return response;
         }

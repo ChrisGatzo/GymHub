@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using GymHub.Models;
 using GymHub.Models.Domain;
 using GymHub.WebClient.ViewModels;
 
@@ -9,10 +8,10 @@ namespace GymHub.WebClient
     {
         public static void RegisterMappings()
         {
-            Mapper.CreateMap<TraineeStatistic, TraineeStatisticViewModel>();
-            Mapper.CreateMap<Trainee, TraineeViewModel>();
+            Mapper.CreateMap<AthleteStatistic, AthleteStatisticViewModel>();
+            Mapper.CreateMap<Athlete, AthleteViewModel>();
             Mapper.CreateMap<Exercise, ExerciseViewModel>();
-            Mapper.CreateMap<TraineeStatisticViewModel, TraineeStatistic>();
+            Mapper.CreateMap<AthleteStatisticViewModel, AthleteStatistic>();
         }
     }
 }

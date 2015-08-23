@@ -3,7 +3,8 @@ using GymHub.Models.Domain;
 
 namespace GymHub.DataAccess.Repositories
 {
-    public interface ITraineeCheckInRepository: IGenericRepository<TraineeCheckIn>
+    public interface IAthleteStatisticsRepository : IGenericRepository<AthleteStatistic>
     {
+
     }
 }

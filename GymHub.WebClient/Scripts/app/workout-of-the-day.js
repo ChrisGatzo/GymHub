@@ -1,13 +1,13 @@
 ﻿var gymHub = gymHub || {};
 
 gymHub.workoutOfTheDay = function () {
-    var statisticsModal = $("#trainee-statistic-modal");
-    var traineesCheckInModal = $("#trainees-checkin-modal");
+    var statisticsModal = $("#athlete-statistic-modal");
+    var athletesCheckInModal = $("#athletes-checkin-modal");
     var baseUrl = $("body").data("route-url");
     var oTable;
 
     var initSignalr = function () {
-        var clientHub = $.connection.activeTraineesHub;
+        var clientHub = $.connection.activeAthletesHub;
         clientHub.client.broadcastMessage = function (message) {
             oTable.draw();
         };
@@ -15,10 +15,10 @@ gymHub.workoutOfTheDay = function () {
     };
 
     var initDataTables = function () {
-        oTable = $("#trainees-table").DataTable({
+        oTable = $("#athletes-table").DataTable({
             "processing": true,
             "serverSide": true,
-            "ajax": baseUrl + "WorkoutOfTheDay/ActiveTraineesPaging",
+            "ajax": baseUrl + "WorkoutOfTheDay/ActiveAthletesPaging",
             "responsive": true,
             "columnDefs": [
                 { "orderable": false, "width": "4%", "targets": 0 }
@@ -42,8 +42,8 @@ gymHub.workoutOfTheDay = function () {
         statisticsModal.modal("show");
     },
     editStatistics = function ($buttonClicked) {
-        var traineeId = $buttonClicked.data("trainee-id");
-        gymHub.dataService.editStatistics(traineeId, editStatisticsCallback);
+        var athleteId = $buttonClicked.data("athlete-id");
+        gymHub.dataService.editStatistics(athleteId, editStatisticsCallback);
     };
 
     var saveStatisticsCallback = function (response) {
@@ -56,23 +56,23 @@ gymHub.workoutOfTheDay = function () {
 
     },
     saveStatistics = function () {
-        var data = $("#trainee-statistics-form").serialize();
+        var data = $("#athlete-statistics-form").serialize();
         gymHub.dataService.saveStatistics(data, saveStatisticsCallback);
     };
 
-    var getInactiveTraineesCallback = function (response) {
-        traineesCheckInModal.html(response);
-        traineesCheckInModal.modal("show");
+    var getInactiveAthletesCallback = function (response) {
+        athletesCheckInModal.html(response);
+        athletesCheckInModal.modal("show");
     },
-    getInactiveTrainees = function () {
-        gymHub.dataService.getInactiveTrainees(getInactiveTraineesCallback);
+    getInactiveAthletes = function () {
+        gymHub.dataService.getInactiveAthletes(getInactiveAthletesCallback);
     };
 
     return {
         init: init,
         editStatistics: editStatistics,
         saveStatistics: saveStatistics,
-        getInactiveTrainees: getInactiveTrainees
+        getInactiveAthletes: getInactiveAthletes
     };
 
 }();
@@ -81,18 +81,18 @@ $(function () {
 
     gymHub.workoutOfTheDay.init();
 
-    $("#trainees-table").on("click", ".edit-statistics", function () {
+    $("#athletes-table").on("click", ".edit-statistics", function () {
         gymHub.workoutOfTheDay.editStatistics($(this));
     });
 
 
-    $("#trainee-statistic-modal").on("click", "#save-trainee-statistic", function () {
+    $("#athlete-statistic-modal").on("click", "#save-athlete-statistic", function () {
         gymHub.workoutOfTheDay.saveStatistics();
     });
 
 
-    $("#trainee-checkin").on("click", function () {
-        gymHub.workoutOfTheDay.getInactiveTrainees();
+    $("#athlete-checkin").on("click", function () {
+        gymHub.workoutOfTheDay.getInactiveAthletes();
     });
 
 })

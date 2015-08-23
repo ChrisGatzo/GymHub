@@ -6,13 +6,13 @@ namespace GymHub.WebClient.ViewModels
     {
         public WorkoutOfTheDayViewModel()
         {
-            ActiveTraineeViewModels = new List<TraineeViewModel>();
+            ActiveAthleteViewModels = new List<AthleteViewModel>();
             ExerciseViewModels = new List<ExerciseViewModel>();
             DataTableRows = new List<List<string>>();
         }
 
         public string CurrentTrainingDate { get; set; }
-        public List<TraineeViewModel> ActiveTraineeViewModels { get; set; }
+        public List<AthleteViewModel> ActiveAthleteViewModels { get; set; }
         public List<ExerciseViewModel> ExerciseViewModels { get; set; }
         public List<List<string>> DataTableRows { get; set; }
     }    

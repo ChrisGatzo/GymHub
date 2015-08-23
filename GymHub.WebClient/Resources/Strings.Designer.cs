@@ -61,11 +61,38 @@ namespace GymHub.WebClient.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Active Trainees.
+        ///   Looks up a localized string similar to Active Athletes.
         /// </summary>
-        public static string ActiveTrainees {
+        public static string ActiveAthletes {
             get {
-                return ResourceManager.GetString("ActiveTrainees", resourceCulture);
+                return ResourceManager.GetString("ActiveAthletes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Athlete checked in successfully.
+        /// </summary>
+        public static string AthleteCheckedInSuccessfully {
+            get {
+                return ResourceManager.GetString("AthleteCheckedInSuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Athlete Check In.
+        /// </summary>
+        public static string AthleteCheckIn {
+            get {
+                return ResourceManager.GetString("AthleteCheckIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Athlete Exercises.
+        /// </summary>
+        public static string AthleteExercises {
+            get {
+                return ResourceManager.GetString("AthleteExercises", resourceCulture);
             }
         }
         
@@ -228,33 +255,6 @@ namespace GymHub.WebClient.Resources {
         public static string TodaysTraining {
             get {
                 return ResourceManager.GetString("TodaysTraining", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Trainee checked in successfully.
-        /// </summary>
-        public static string TraineeCheckedInSuccessfully {
-            get {
-                return ResourceManager.GetString("TraineeCheckedInSuccessfully", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Trainee Check In.
-        /// </summary>
-        public static string TraineeCheckIn {
-            get {
-                return ResourceManager.GetString("TraineeCheckIn", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Trainee Exercises.
-        /// </summary>
-        public static string TraineeExercises {
-            get {
-                return ResourceManager.GetString("TraineeExercises", resourceCulture);
             }
         }
         

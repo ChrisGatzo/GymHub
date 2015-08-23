@@ -9,25 +9,25 @@ namespace GymHub.WebClient.Controllers
 {
     public class CheckInController : ApiController
     {
-        private readonly ITraineeService _traineeService;
+        private readonly IAthleteService _athleteService;
 
         public CheckInController()
         {
-            _traineeService = new TraineeService(new UnitOfWork(), new StatisticsService(new UnitOfWork()));
+            _athleteService = new AthleteService(new UnitOfWork(), new StatisticsService(new UnitOfWork()));
         }
 
-        public IHttpActionResult Post([FromBody]int traineeId)
+        public IHttpActionResult Post([FromBody]int athleteId)
         {
-            var request = new CheckInTraineeRequest
+            var request = new CheckInAthleteRequest
             {
-                TraineeId = traineeId
+                AthleteId = athleteId
             };
 
-            var response = _traineeService.CheckInTrainee(request);
+            var response = _athleteService.CheckInAthlete(request);
 
-            ActiveTraineesHub.DispatchToClient();
+            ActiveAthletesHub.DispatchToClient();
 
-            return Ok(Strings.TraineeCheckedInSuccessfully);
+            return Ok(Strings.AthleteCheckedInSuccessfully);
         }
     }
 }

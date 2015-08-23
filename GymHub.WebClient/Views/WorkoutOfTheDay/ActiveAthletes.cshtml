@@ -6,16 +6,16 @@
 }
 
 
-<h1>@Strings.ActiveTrainees</h1>
+<h1>@Strings.ActiveAthletes</h1>
 <p>
     <strong>@Strings.TodaysTraining: @DateTime.Now.ToString("dddd dd/MM/yyyy", CultureInfo.InvariantCulture)</strong>
 
-    <button id="trainee-checkin" type="button" class="btn btn-link" data-toggle="tooltip" data-placement="right" title="@Strings.TraineeCheckIn">
+    <button id="athlete-checkin" type="button" class="btn btn-link" data-toggle="tooltip" data-placement="right" title="@Strings.AthleteCheckIn">
         <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
     </button>
 </p>
 
-<table class="table table-striped table-bordered table-hover" id="trainees-table">
+<table class="table table-striped table-bordered table-hover" id="athletes-table">
     <thead>
         <tr>
             <th></th>
@@ -28,13 +28,13 @@
     </thead>
 </table>
 
-<div class="modal fade" id="trainee-statistic-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="athlete-statistic-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 </div>
-<div class="modal fade" id="trainees-checkin-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="athletes-checkin-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 </div>
 
 @section scripts{
     @Scripts.Render("/signalr/hubs")
     @Scripts.Render("~/bundles/workoutoftheday")
-    @Scripts.Render("~/bundles/traineecheckin")
+    @Scripts.Render("~/bundles/athletecheckin")
 }

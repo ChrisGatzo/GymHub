@@ -12,7 +12,7 @@ namespace GymHub.WebClient
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "WorkoutOfTheDay", action = "ActiveTrainees", id = UrlParameter.Optional }
+                defaults: new { controller = "WorkoutOfTheDay", action = "ActiveAthletes", id = UrlParameter.Optional }
             );
         }
     }

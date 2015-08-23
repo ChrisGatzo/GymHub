@@ -2,16 +2,16 @@ using System.Collections.Generic;
 
 namespace GymHub.WebClient.ViewModels
 {
-    public class TraineeViewModel
+    public class AthleteViewModel
     {
-        public TraineeViewModel()
+        public AthleteViewModel()
         {
-            TraineeStatisticViewModels = new List<TraineeStatisticViewModel>();
+            AthleteStatisticViewModels = new List<AthleteStatisticViewModel>();
         }
 
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public List<TraineeStatisticViewModel> TraineeStatisticViewModels { get; set; }
+        public List<AthleteStatisticViewModel> AthleteStatisticViewModels { get; set; }
     }
 }

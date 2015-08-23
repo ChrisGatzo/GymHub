@@ -6,26 +6,26 @@ namespace GymHub.DataAccess.Infrastructure
     public class UnitOfWork : IUnitOfWork, IDisposable
     {
         private readonly GymHubEntities _context;
-        private ITraineeRepository _traineeRepository;
+        private IAthleteRepository _athleteRepository;
         private IExerciseRepository _exerciseRepository;
         private IProgramRepository _programRepository;
-        private ITraineeStatisticsRepository _traineeStatisticsRepository;
-        private ITraineeCheckInRepository _traineeCheckInRepository;
+        private IAthleteStatisticsRepository _athleteStatisticsRepository;
+        private IAthleteCheckInRepository _athleteCheckInRepository;
 
         public UnitOfWork()
         {
             _context = new GymHubEntities();
         }
 
-        public ITraineeRepository TraineeRepository
+        public IAthleteRepository AthleteRepository
         {
             get
             {
-                if (_traineeRepository == null)
+                if (_athleteRepository == null)
                 {
-                    _traineeRepository = new TraineeRepository(_context);
+                    _athleteRepository = new AthleteRepository(_context);
                 }
-                return _traineeRepository;
+                return _athleteRepository;
             }
         }
 
@@ -54,29 +54,29 @@ namespace GymHub.DataAccess.Infrastructure
             }
         }
 
-        public ITraineeStatisticsRepository TraineeStatisticsRepository
+        public IAthleteStatisticsRepository AthleteStatisticsRepository
         {
             get
             {
-                if (_traineeStatisticsRepository == null)
+                if (_athleteStatisticsRepository == null)
                 {
-                    _traineeStatisticsRepository = new TraineeStatisticsRepository(_context);
+                    _athleteStatisticsRepository = new AthleteStatisticsRepository(_context);
                 }
 
-                return _traineeStatisticsRepository;
+                return _athleteStatisticsRepository;
             }
         }
 
-        public ITraineeCheckInRepository TraineeCheckInRepository
+        public IAthleteCheckInRepository AthleteCheckInRepository
         {
             get
             {
-                if (_traineeCheckInRepository == null)
+                if (_athleteCheckInRepository == null)
                 {
-                    _traineeCheckInRepository = new TraineeCheckInRepository(_context);
+                    _athleteCheckInRepository = new AthleteCheckInRepository(_context);
                 }
 
-                return _traineeCheckInRepository;
+                return _athleteCheckInRepository;
             }
         }
 

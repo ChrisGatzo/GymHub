@@ -47,9 +47,9 @@
   <ItemGroup>
     <Compile Include="Domain\Exercise.cs" />
     <Compile Include="Domain\Program.cs" />
-    <Compile Include="Domain\Trainee.cs" />
-    <Compile Include="Domain\TraineeCheckIn.cs" />
-    <Compile Include="Domain\TraineeStatistic.cs" />
+    <Compile Include="Domain\Athlete.cs" />
+    <Compile Include="Domain\AthleteCheckIn.cs" />
+    <Compile Include="Domain\AthleteStatistic.cs" />
     <Compile Include="Domain\TrainingSchedule.cs" />
     <Compile Include="Helpers\OrderDirection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

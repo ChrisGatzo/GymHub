@@ -7,7 +7,7 @@ namespace GymHub.Models.Domain
         public int Id { get; set; }
         public string Name { get; set; }
 
-        public virtual ICollection<TraineeStatistic> TraineeStatistics { get; set; }
+        public virtual ICollection<AthleteStatistic> AthleteStatistics { get; set; }
         public virtual ICollection<TrainingSchedule> TrainingSchedules { get; set; }
     }
 }

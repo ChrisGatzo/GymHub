@@ -38,7 +38,7 @@ namespace GymHub.WebClient
 
             // TODO: Register your types here
             container.RegisterType<IUnitOfWork, UnitOfWork>(new PerRequestLifetimeManager());
-            container.RegisterType<ITraineeService, TraineeService>();
+            container.RegisterType<IAthleteService, AthleteService>();
             container.RegisterType<IStatisticsService, StatisticsService>();
             container.RegisterType<IAttachmentService, AttachmentService>();
             container.RegisterType<IDietService, DietService>();

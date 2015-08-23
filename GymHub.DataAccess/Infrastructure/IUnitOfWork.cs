@@ -4,11 +4,11 @@ namespace GymHub.DataAccess.Infrastructure
 {
     public interface IUnitOfWork
     {
-        ITraineeRepository TraineeRepository { get; }
+        IAthleteRepository AthleteRepository { get; }
         IExerciseRepository ExerciseRepository { get; }
         IProgramRepository ProgramRepository { get; }
-        ITraineeStatisticsRepository TraineeStatisticsRepository { get; }
-        ITraineeCheckInRepository TraineeCheckInRepository { get; }
+        IAthleteStatisticsRepository AthleteStatisticsRepository { get; }
+        IAthleteCheckInRepository AthleteCheckInRepository { get; }
         void Save();
         void Dispose();
     }

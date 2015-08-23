@@ -1,5 +1,4 @@
-﻿using GymHub.DataAccess;
-using GymHub.DataAccess.Infrastructure;
+﻿using GymHub.DataAccess.Infrastructure;
 
 namespace GymHub.Service
 {
@@ -12,7 +11,7 @@ namespace GymHub.Service
             _unitOfWork = unitOfWork;
         }
 
-        public void GetTraineeDiets(int traineeId)
+        public void GetAthleteDiets(int athleteId)
         {
 
         }

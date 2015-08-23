@@ -3,19 +3,19 @@ using GymHub.WebClient.Resources;
 
 namespace GymHub.WebClient.ViewModels
 {
-    public class TraineeStatisticViewModel
+    public class AthleteStatisticViewModel
     {
-        //public TraineeStatisticViewModel()
+        //public AthleteStatisticViewModel()
         //{
         //    ExercisesList = new List<SelectListItem>();
         //}
 
         public int? Id { get; set; }
         
-        public int TraineeId { get; set; }
+        public int AthleteId { get; set; }
         
         //[Display(Name = "Name", ResourceType = typeof(Strings))]
-        //public string TraineeName { get; set; }
+        //public string AthleteName { get; set; }
         
         [Display(Name = "Exercise", ResourceType = typeof(Strings))]
         public int ExerciseId { get; set; }

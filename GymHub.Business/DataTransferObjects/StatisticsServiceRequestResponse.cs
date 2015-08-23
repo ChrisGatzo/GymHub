@@ -6,55 +6,55 @@ namespace GymHub.Service.DataTransferObjects
 {
     public class GetActiveUsersStatisticsResponse
     {
-        public IEnumerable<TraineeStatistic> TraineeStatistics { get; set; }
+        public IEnumerable<AthleteStatistic> AthleteStatistics { get; set; }
     }
 
     public class GetActiveUsersStatisticsRequest
     {
-        public IEnumerable<Trainee> ActiveUsers { get; set; }
+        public IEnumerable<Athlete> ActiveUsers { get; set; }
         public IEnumerable<Exercise> ExercisesOfTheDay { get; set; }
     }
 
-    public class UpdateTraineeStatisticsRequest
+    public class UpdateAthleteStatisticsRequest
     {
-        public IEnumerable<TraineeStatistic> TraineeStatistics { get; set; }
+        public IEnumerable<AthleteStatistic> AthleteStatistics { get; set; }
     }
 
-    public class UpdateTraineeStatisticsResponse
+    public class UpdateAthleteStatisticsResponse
     {
     }
 
     public class GetExercisesOfTheDayRequest
     {
-        public bool WithTraineeStatistics { get; set; }
-        public int TraineeId { get; set; }
+        public bool WithAthleteStatistics { get; set; }
+        public int AthleteId { get; set; }
     }
 
     public class GetExercisesOfTheDayResponse
     {
         public IEnumerable<Exercise> Exercises { get; set; }
-        public IEnumerable<TraineeStatistic> TraineeStatistics { get; set; }
-        public Trainee Trainee { get; set; }
+        public IEnumerable<AthleteStatistic> AthleteStatistics { get; set; }
+        public Athlete Athlete { get; set; }
     }   
 
-    public class GetExercisesPerformedByTraineeRequest
+    public class GetExercisesPerformedByAthleteRequest
     {
-        public int TraineeId { get; set; }
+        public int AthleteId { get; set; }
     }
 
-    public class GetExercisesPerformedByTraineeResponse
+    public class GetExercisesPerformedByAthleteResponse
     {
         public IEnumerable<Exercise> Exercises { get; set; }
     }
 
-    public class GetStatisticsForTraineeResponse
+    public class GetStatisticsForAthleteResponse
     {
-        public IEnumerable<TraineeStatistic> TraineeStatistics { get; set; }
+        public IEnumerable<AthleteStatistic> AthleteStatistics { get; set; }
     }
 
-    public class GetStatisticsForTraineeRequest
+    public class GetStatisticsForAthleteRequest
     {
-        public int TraineeId { get; set; }
+        public int AthleteId { get; set; }
         public int ExerciseId { get; set; }
         public DateTime DateFrom { get; set; }
         public DateTime DateTo { get; set; }

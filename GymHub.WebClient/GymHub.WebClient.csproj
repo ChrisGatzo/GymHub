@@ -239,7 +239,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CheckInController.cs" />
-    <Compile Include="Hubs\ActiveTraineesHub.cs" />
+    <Compile Include="Hubs\ActiveAthletesHub.cs" />
     <Compile Include="Controllers\DietController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\StatisticsController.cs" />
@@ -252,13 +252,13 @@
     <Compile Include="Models\NameValueCollectionExtensions.cs" />
     <Compile Include="Models\Search.cs" />
     <Compile Include="ViewModels\DietViewModel.cs" />
-    <Compile Include="ViewModels\TraineeDietViewModel.cs" />
+    <Compile Include="ViewModels\AthleteDietViewModel.cs" />
     <Compile Include="Infrastructure\Exceptions\JavaScriptException.cs" />
     <Compile Include="Infrastructure\Filters\ExtendedHandleErrorAttribute.cs" />
-    <Compile Include="ViewModelBuilders\TraineeStatisticViewModelBuilder.cs" />
+    <Compile Include="ViewModelBuilders\AthleteStatisticViewModelBuilder.cs" />
     <Compile Include="ViewModels\ExerciseViewModel.cs" />
-    <Compile Include="ViewModels\TraineeStatisticViewModel.cs" />
-    <Compile Include="ViewModels\TraineeViewModel.cs" />
+    <Compile Include="ViewModels\AthleteStatisticViewModel.cs" />
+    <Compile Include="ViewModels\AthleteViewModel.cs" />
     <Compile Include="Resources\Strings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -352,7 +352,7 @@
     <Content Include="Scripts\app\diet.js" />
     <Content Include="Scripts\app\stacktrace.js" />
     <Content Include="Scripts\app\statistics.js" />
-    <Content Include="Scripts\app\trainee-checkin.js" />
+    <Content Include="Scripts\app\athlete-checkin.js" />
     <Content Include="Scripts\app\workout-of-the-day.js" />
     <Content Include="Scripts\libs\jquery\jquery.signalR-2.1.0.js" />
     <Content Include="Scripts\libs\jquery\jquery.signalR-2.1.0.min.js" />
@@ -447,15 +447,15 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Scripts\libs\toastr\toastr.min.js.map" />
     <Content Include="Views\Shared\_Nav.cshtml" />
-    <Content Include="Views\WorkoutOfTheDay\ActiveTrainees.cshtml" />
-    <Content Include="Views\Statistics\TraineeStatistics.cshtml" />
-    <Content Include="Views\Diet\Trainees.cshtml" />
-    <Content Include="Views\Diet\TraineeDiet.cshtml" />
-    <Content Include="Views\Statistics\Trainees.cshtml" />
-    <Content Include="Views\Statistics\TraineeExercises.cshtml" />
+    <Content Include="Views\WorkoutOfTheDay\ActiveAthletes.cshtml" />
+    <Content Include="Views\Statistics\AthleteStatistics.cshtml" />
+    <Content Include="Views\Diet\Athletes.cshtml" />
+    <Content Include="Views\Diet\AthleteDiet.cshtml" />
+    <Content Include="Views\Statistics\Athletes.cshtml" />
+    <Content Include="Views\Statistics\AthleteExercises.cshtml" />
     <Content Include="Views\Statistics\ExerciseGraph.cshtml" />
     <Content Include="Views\Shared\_Dictionary.cshtml" />
-    <Content Include="Views\WorkoutOfTheDay\InactiveTrainees.cshtml" />
+    <Content Include="Views\WorkoutOfTheDay\InactiveAthletes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Error\" />

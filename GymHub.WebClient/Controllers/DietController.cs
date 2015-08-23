@@ -12,41 +12,41 @@ namespace GymHub.WebClient.Controllers
 {
     public class DietController : Controller
     {
-        private readonly ITraineeService _traineeService;
+        private readonly IAthleteService _athleteService;
         private readonly IAttachmentService _attachmentService;
         private readonly IDietService _dietService;
 
-        public DietController(ITraineeService traineeService, IAttachmentService attachmentService, IDietService dietService)
+        public DietController(IAthleteService athleteService, IAttachmentService attachmentService, IDietService dietService)
         {
-            _traineeService = traineeService;
+            _athleteService = athleteService;
             _attachmentService = attachmentService;
             _dietService = dietService;
         }
 
-        public ActionResult Trainees()
+        public ActionResult Athletes()
         {
-            var response = _traineeService.GetAllTrainees(new GetAllTraineesRequest());
+            var response = _athleteService.GetAllAthletes(new GetAllAthletesRequest());
 
-            var traineeViewModels = Mapper.Map<List<Trainee>, List<TraineeViewModel>>(response.Trainees.ToList());
+            var athleteViewModels = Mapper.Map<List<Athlete>, List<AthleteViewModel>>(response.Athletes.ToList());
 
             ViewBag.DietActive = "active";
-            return View(traineeViewModels);
+            return View(athleteViewModels);
         }
 
-        public ActionResult TraineeDiet(int traineeId)
+        public ActionResult AthleteDiet(int athleteId)
         {
-            // var traineeDiets =_dietService.GetTraineeDiets(traineeId);            
+            // var athleteDiets =_dietService.GetAthleteDiets(athleteId);            
 
-            var traineeDietViewModel = new TraineeDietViewModel();
-            traineeDietViewModel.DietViewModels = new List<DietViewModel>(); //Mapper.Map<List<TraineeDiet>, List<TraineeDietViewModel>>(traineeDiets);
+            var athleteDietViewModel = new AthleteDietViewModel();
+            athleteDietViewModel.DietViewModels = new List<DietViewModel>(); //Mapper.Map<List<AthleteDiet>, List<AthleteDietViewModel>>(athleteDiets);
 
 
-            return PartialView(traineeDietViewModel);
+            return PartialView(athleteDietViewModel);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult TraineeDiet(TraineeDietViewModel traineeDietViewModel)
+        public ActionResult AthleteDiet(AthleteDietViewModel athleteDietViewModel)
         {
             if (!ModelState.IsValid)
             {
@@ -55,8 +55,8 @@ namespace GymHub.WebClient.Controllers
 
             var request = new UploadFileRequest
             {
-                TraineeId = traineeDietViewModel.TraineeId,
-                AttachmentFile = traineeDietViewModel.AttachmentFile.InputStream
+                AthleteId = athleteDietViewModel.AthleteId,
+                AttachmentFile = athleteDietViewModel.AttachmentFile.InputStream
             };
 
             _attachmentService.UploadFile(request);

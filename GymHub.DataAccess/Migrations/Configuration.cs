@@ -18,21 +18,21 @@ namespace GymHub.DataAccess.Migrations
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data. E.g.
             //
-            context.Trainees.AddOrUpdate(
+            context.Athletes.AddOrUpdate(
              t => t.Id,
-              new Trainee
+              new Athlete
               {
                   Id = 1,
                   FirstName = "Chris",
                   LastName = "Gatzonis",
               },
-               new Trainee
+               new Athlete
                {
                    Id = 2,
                    FirstName = "James",
                    LastName = "Papadopoulos",
                },
-                new Trainee
+                new Athlete
                 {
                     Id = 3,
                     FirstName = "John",

@@ -117,79 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CannotSubmitEmptyFile" xml:space="preserve">
-    <value>Please select a file to upload</value>
+  <data name="Target" xml:space="preserve">
+    <value>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</value>
   </data>
-  <data name="CheckIn" xml:space="preserve">
-    <value>Check In</value>
-  </data>
-  <data name="Close" xml:space="preserve">
-    <value>Close</value>
-  </data>
-  <data name="Comment" xml:space="preserve">
-    <value>Comment</value>
-  </data>
-  <data name="Date" xml:space="preserve">
-    <value>Date</value>
-  </data>
-  <data name="DateSubmitted" xml:space="preserve">
-    <value>Date Submitted</value>
-  </data>
-  <data name="DayStatistics" xml:space="preserve">
-    <value>Day Statistics</value>
-  </data>
-  <data name="Exercise" xml:space="preserve">
-    <value>Exercise</value>
-  </data>
-  <data name="FileName" xml:space="preserve">
-    <value>File Name</value>
-  </data>
-  <data name="Files" xml:space="preserve">
-    <value>Files</value>
-  </data>
-  <data name="ModelNotValid" xml:space="preserve">
-    <value>Form is not valid</value>
-  </data>
-  <data name="Name" xml:space="preserve">
-    <value>Name</value>
-  </data>
-  <data name="Nutrition" xml:space="preserve">
-    <value>Nutrition</value>
-  </data>
-  <data name="Save" xml:space="preserve">
-    <value>Save</value>
-  </data>
-  <data name="Statistics" xml:space="preserve">
-    <value>Statistics</value>
-  </data>
-  <data name="StatisticsSuccessfulSave" xml:space="preserve">
-    <value>Statistics saved successfully</value>
-  </data>
-  <data name="SuccessfulFileUpload" xml:space="preserve">
-    <value>File uploaded successfully</value>
-  </data>
-  <data name="TodaysTraining" xml:space="preserve">
-    <value>Today's Training</value>
-  </data>
-  <data name="AthleteCheckedInSuccessfully" xml:space="preserve">
-    <value>Athlete checked in successfully</value>
-  </data>
-  <data name="AthleteCheckIn" xml:space="preserve">
-    <value>Athlete Check In</value>
-  </data>
-  <data name="AthleteExercises" xml:space="preserve">
-    <value>Athlete Exercises</value>
-  </data>
-  <data name="UnexpectedErrorOccurred" xml:space="preserve">
-    <value>Server error</value>
-  </data>
-  <data name="Weight" xml:space="preserve">
-    <value>Weight</value>
-  </data>
-  <data name="WorkoutOfTheDay" xml:space="preserve">
-    <value>Workout Of The Day</value>
-  </data>
-  <data name="ActiveAthletes" xml:space="preserve">
-    <value>Active Athletes</value>
+  <data name="DefaultSchema" xml:space="preserve">
+    <value>dbo</value>
   </data>
 </root>

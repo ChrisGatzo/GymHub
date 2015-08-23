@@ -3,9 +3,9 @@ using GymHub.Models.Domain;
 
 namespace GymHub.DataAccess.Repositories
 {
-    public class TraineeStatisticsRepository : GenericRepository<TraineeStatistic>, ITraineeStatisticsRepository
+    public class AthleteStatisticsRepository : GenericRepository<AthleteStatistic>, IAthleteStatisticsRepository
     {
-        public TraineeStatisticsRepository(GymHubEntities context)
+        public AthleteStatisticsRepository(GymHubEntities context)
             : base(context)
         {
 

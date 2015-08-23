@@ -2,12 +2,12 @@
 
 namespace GymHub.Models.Domain
 {
-    public class TraineeCheckIn
+    public class AthleteCheckIn
     {
         public int Id { get; set; }
-        public int TraineeId { get; set; }
+        public int AthleteId { get; set; }
         public DateTime CheckInDateTime { get; set; }
 
-        public virtual Trainee Trainees { get; set; }
+        public virtual Athlete Athletes { get; set; }
     }
 }

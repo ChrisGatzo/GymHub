@@ -7,13 +7,13 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            @Html.ActionLink("Gym Hub", "ActiveTrainees", "WorkoutOfTheDay", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("Gym Hub", "ActiveAthletes", "WorkoutOfTheDay", new { area = "" }, new { @class = "navbar-brand" })
         </div>
         <div class="navbar-collapse collapse" id="nav-collapse">
             <ul class="nav navbar-nav">              
-                <li class="@ViewBag.WorkoutOfTheDayActive">@Html.ActionLink("Workout of the day", "ActiveTrainees", "WorkoutOfTheDay")</li>
-                <li class="@ViewBag.StatisticsActive">@Html.ActionLink(Strings.Statistics, "Trainees", "Statistics")</li>
-                <li class="@ViewBag.DietActive">@Html.ActionLink(Strings.Nutrition, "Trainees", "Diet")</li>             
+                <li class="@ViewBag.WorkoutOfTheDayActive">@Html.ActionLink("Workout of the day", "ActiveAthletes", "WorkoutOfTheDay")</li>
+                <li class="@ViewBag.StatisticsActive">@Html.ActionLink(Strings.Statistics, "Athletes", "Statistics")</li>
+                <li class="@ViewBag.DietActive">@Html.ActionLink(Strings.Nutrition, "Athletes", "Diet")</li>             
             </ul>
             @Html.Partial("_LoginPartial")
         </div>

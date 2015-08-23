@@ -2,6 +2,6 @@
 {
     public interface IDietService
     {
-        void GetTraineeDiets(int traineeId);
+        void GetAthleteDiets(int athleteId);
     }
 }

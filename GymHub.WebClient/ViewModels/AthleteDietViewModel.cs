@@ -5,9 +5,9 @@ using GymHub.WebClient.Resources;
 
 namespace GymHub.WebClient.ViewModels
 {
-    public class TraineeDietViewModel
+    public class AthleteDietViewModel
     {
-        public int TraineeId { get; set; }
+        public int AthleteId { get; set; }
 
         public HttpPostedFileBase AttachmentFile { get; set; }
 

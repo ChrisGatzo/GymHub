@@ -5,12 +5,12 @@ gymHub.dataService = function () {
 
     var getRequest = "GET";
     var postRequest = "POST";
-    var editStatisticsUrl = "Statistics/TraineeStatistics";
+    var editStatisticsUrl = "Statistics/AthleteStatistics";
     var saveStatisticsUrl = editStatisticsUrl;
     var logErrorUrl = "Error/LogJavaScriptError";
-    var editDietUrl = "Diet/TraineeDiet";
-    var getInactiveTraineesUrl = "WorkoutOfTheDay/InactiveTrainees";
-    var checkinTraineeUrl = "api/CheckIn";
+    var editDietUrl = "Diet/AthleteDiet";
+    var getInactiveAthletesUrl = "WorkoutOfTheDay/InactiveAthletes";
+    var checkinAthleteUrl = "api/CheckIn";
 
     $.ajaxSetup({ cache: false });
 
@@ -27,8 +27,8 @@ gymHub.dataService = function () {
         });
     };
 
-    var editStatistics = function (traineeId, callback) {
-        performAjaxRequest(getRequest, editStatisticsUrl, { traineeId: traineeId }, callback);
+    var editStatistics = function (athleteId, callback) {
+        performAjaxRequest(getRequest, editStatisticsUrl, { athleteId: athleteId }, callback);
     };
 
     var saveStatistics = function (data, callback) {
@@ -43,20 +43,20 @@ gymHub.dataService = function () {
         });
     };
 
-    var editDiet = function (traineeId, callback) {
-        performAjaxRequest(getRequest, editDietUrl, { traineeId: traineeId }, callback);
+    var editDiet = function (athleteId, callback) {
+        performAjaxRequest(getRequest, editDietUrl, { athleteId: athleteId }, callback);
     };
 
     var uploadDiet = function ($dietUploadForm, uploadOptions) {
         $dietUploadForm.ajaxSubmit(uploadOptions);
     };
 
-    var getInactiveTrainees = function (callback) {
-        performAjaxRequest(getRequest, getInactiveTraineesUrl, {}, callback);
+    var getInactiveAthletes = function (callback) {
+        performAjaxRequest(getRequest, getInactiveAthletesUrl, {}, callback);
     };
 
-    var checkinTrainee = function (traineeId, callback) {
-        performAjaxRequest(postRequest, checkinTraineeUrl, { '': traineeId }, callback);
+    var checkinAthlete = function (athleteId, callback) {
+        performAjaxRequest(postRequest, checkinAthleteUrl, { '': athleteId }, callback);
     };
 
 
@@ -66,7 +66,7 @@ gymHub.dataService = function () {
         logJavascriptError: logJavascriptError,
         editDiet: editDiet,
         uploadDiet: uploadDiet,
-        getInactiveTrainees: getInactiveTrainees,
-        checkinTrainee: checkinTrainee
+        getInactiveAthletes: getInactiveAthletes,
+        checkinAthlete: checkinAthlete
     };
 }();
