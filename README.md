@@ -1,5 +1,5 @@
 # GymHub
-Gym Hub is a prototype web site where trainees can go and log their progress after training.
+Gym Hub is a prototype web site where athletes can go and log their progress after training.
 
 The purpose of this project is to demonstrate various technologies, design patterns and best practices 
 for building an ASP.NET application.
