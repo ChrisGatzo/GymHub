@@ -6,6 +6,7 @@ using AutoMapper;
 using GymHub.Models.Domain;
 using GymHub.Service;
 using GymHub.Service.DataTransferObjects;
+using GymHub.WebClient.Hubs;
 using GymHub.WebClient.Resources;
 using GymHub.WebClient.ViewModelBuilders;
 using GymHub.WebClient.ViewModels;
@@ -69,6 +70,8 @@ namespace GymHub.WebClient.Controllers
                 TraineeStatistics = traineeStatistics
             };
             var response = _statisticsService.UpdateTraineeStatistics(request);
+
+            ActiveTraineesHub.DispatchToClient();
 
             return Json(new { IsValid = true, Message = Strings.StatisticsSuccessfulSave });
         }
