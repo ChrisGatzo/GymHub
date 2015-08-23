@@ -44,29 +44,36 @@ namespace GymHub.WebClient.Controllers
             var orderDirection = orderedEnumerable.First().SortDirection == 0 ? OrderDirection.Ascendant : OrderDirection.Descendant;
             var searchValue = requestModel.Search.Value;
 
-            var request = new GetPagedTraineesRequest
+            var request = new GetFilteredTraineesRequest
             {
                 OrderByColumn = orderByColumn,
                 OrderDirection = orderDirection,
                 SearchValue = searchValue,
                 Start = requestModel.Start,
                 Length = requestModel.Length,
-                WithExercises = true,
+                WithExercisesOfTheDay = true,
                 WithStatistics = true
             };
 
-            var response = _traineeService.GetPagedTrainees(request);
+            var response = _traineeService.GetFilteredTrainees(request);
 
             var workoutOfTheDayViewModel =
                 new WorkoutOfTheDayViewModelBuilder()
-                    .WithDataTableRows(response.PagedTrainees, response.Exercises, response.TraineeStatistics.ToList())
+                    .WithDataTableRows(response.FilteredTrainees, response.ExercisesOfTheDay.ToList())
                     .Build();
 
-            var recordsTotal = response.RecordsTotal;  
-            var recordsFiltered = response.RecordsFiltered; 
+            var recordsTotal = response.RecordsTotal;
+            var recordsFiltered = response.RecordsFiltered;
             var paged = workoutOfTheDayViewModel.DataTableRows;
 
             return Json(new DataTablesResponse(requestModel.Draw, paged, recordsFiltered, recordsTotal), JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult InactiveTrainees()
+        {
+            var inactiveTrainees = _traineeService.GetInactiveTrainees(new GetInactiveTraineesRequest()).InactiveTrainees.ToList();
+
+            return PartialView(inactiveTrainees);
         }
 
     }

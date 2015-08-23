@@ -1,14 +1,16 @@
 ﻿var gymHub = gymHub || {};
 
 gymHub.dataService = function () {
-    var baseUrl = $('body').data('route-url');
+    var baseUrl = $("body").data("route-url");
 
-    var getRequest = 'GET';
-    var postRequest = 'POST';
-    var editStatisticsUrl = 'Statistics/TraineeStatistics';
+    var getRequest = "GET";
+    var postRequest = "POST";
+    var editStatisticsUrl = "Statistics/TraineeStatistics";
     var saveStatisticsUrl = editStatisticsUrl;
-    var logErrorUrl = 'Error/LogJavaScriptError';
-    var editDietUrl = 'Diet/TraineeDiet';
+    var logErrorUrl = "Error/LogJavaScriptError";
+    var editDietUrl = "Diet/TraineeDiet";
+    var getInactiveTraineesUrl = "WorkoutOfTheDay/InactiveTrainees";
+    var checkinTraineeUrl = "api/CheckIn";
 
     $.ajaxSetup({ cache: false });
 
@@ -49,11 +51,22 @@ gymHub.dataService = function () {
         $dietUploadForm.ajaxSubmit(uploadOptions);
     };
 
+    var getInactiveTrainees = function (callback) {
+        performAjaxRequest(getRequest, getInactiveTraineesUrl, {}, callback);
+    };
+
+    var checkinTrainee = function (traineeId, callback) {
+        performAjaxRequest(postRequest, checkinTraineeUrl, { '': traineeId }, callback);
+    };
+
+
     return {
         editStatistics: editStatistics,
         saveStatistics: saveStatistics,
         logJavascriptError: logJavascriptError,
         editDiet: editDiet,
-        uploadDiet: uploadDiet
+        uploadDiet: uploadDiet,
+        getInactiveTrainees: getInactiveTrainees,
+        checkinTrainee: checkinTrainee
     };
 }();

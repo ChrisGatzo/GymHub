@@ -10,6 +10,7 @@ namespace GymHub.DataAccess.Infrastructure
         private IExerciseRepository _exerciseRepository;
         private IProgramRepository _programRepository;
         private ITraineeStatisticsRepository _traineeStatisticsRepository;
+        private ITraineeCheckInRepository _traineeCheckInRepository;
 
         public UnitOfWork()
         {
@@ -63,6 +64,19 @@ namespace GymHub.DataAccess.Infrastructure
                 }
 
                 return _traineeStatisticsRepository;
+            }
+        }
+
+        public ITraineeCheckInRepository TraineeCheckInRepository
+        {
+            get
+            {
+                if (_traineeCheckInRepository == null)
+                {
+                    _traineeCheckInRepository = new TraineeCheckInRepository(_context);
+                }
+
+                return _traineeCheckInRepository;
             }
         }
 

@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
-using GymHub.Models;
 using GymHub.Models.Domain;
 using GymHub.WebClient.ViewModels;
 
@@ -26,66 +25,62 @@ namespace GymHub.WebClient.ViewModelBuilders
             return this;
         }
 
-        public WorkoutOfTheDayViewModelBuilder WithDataTableRows(IEnumerable<Trainee> activeUsers,
-             IEnumerable<Exercise> exercisesOfTheDay, List<TraineeStatistic> activeUsersStatistics)
+        public WorkoutOfTheDayViewModelBuilder WithDataTableRows(
+            IEnumerable<Trainee> activeTrainees, List<Exercise> exercisesOfTheDay)
         {
-            foreach (var activeUser in activeUsers)
-            {
-                var activeUserViewModel = Mapper.Map<TraineeViewModel>(activeUser);
-                var user = activeUser;
-                foreach (var activeUsersStatistic in activeUsersStatistics
-                    .Where(activeUsersStatistic => activeUsersStatistic.TraineeId == user.Id))
-                {
-                    var traineeStatisticViewModel = Mapper.Map<TraineeStatisticViewModel>(activeUsersStatistic);
-                    activeUserViewModel.TraineeStatisticViewModels.Add(traineeStatisticViewModel);
-                }
 
-                _workoutOfTheDayViewModel.ActiveTraineeViewModels.Add(activeUserViewModel);
-            }
-
-            foreach (var exercise in exercisesOfTheDay)
-            {
-                _workoutOfTheDayViewModel.ExerciseViewModels.Add(Mapper.Map<ExerciseViewModel>(exercise));
-            }
-
-            foreach (var activeTrainee in _workoutOfTheDayViewModel.ActiveTraineeViewModels)
+            foreach (var activeTrainee in activeTrainees)
             {
                 var traineeRow = new List<string>();
-                var editStatisticsColumn =
-                    string.Format(
-                        "<button type='button' class='btn-link edit-statistics' data-trainee-id={0}><span class='glyphicon glyphicon-pencil'></span></button>",
-                        activeTrainee.Id);
-                traineeRow.Add(editStatisticsColumn);
-
-                var nameColumn = string.Format("{0} {1}", activeTrainee.LastName, activeTrainee.FirstName);
-                traineeRow.Add(nameColumn);
-
-
-                foreach (var exerciseViewModel in _workoutOfTheDayViewModel.ExerciseViewModels)
-                {
-                    var traineeStatisticViewModel =
-                        activeTrainee.TraineeStatisticViewModels.SingleOrDefault(
-                            m => m.ExerciseId == exerciseViewModel.Id);
-
-                    var exerciseColumn = string.Format("");
-                    if (traineeStatisticViewModel != null)
-                    {
-                        exerciseColumn = string.Format("{0} kg ({1})", traineeStatisticViewModel.Weight, traineeStatisticViewModel.Date.ToString("dd-MM-yyy"));
-                    }
-
-                    traineeRow.Add(exerciseColumn);
-                }
-
+                MapEditColumn(activeTrainee, traineeRow);
+                MapNameColumn(activeTrainee, traineeRow);
+                MapMostRecentStatisticColumn(exercisesOfTheDay, activeTrainee, traineeRow);
                 _workoutOfTheDayViewModel.DataTableRows.Add(traineeRow);
-
             }
 
             return this;
         }
-
+    
         public WorkoutOfTheDayViewModel Build()
         {
             return _workoutOfTheDayViewModel;
+        }
+
+
+        private static void MapMostRecentStatisticColumn(IEnumerable<Exercise> exercisesOfTheDay, Trainee activeTrainee, ICollection<string> traineeRow)
+        {
+            foreach (var exercise in exercisesOfTheDay)
+            {
+                var mostRecentStatistic =
+                    activeTrainee.TraineeStatistics
+                        .Where(m => m.ExerciseId == exercise.Id)
+                        .OrderByDescending(m => m.Date)
+                        .FirstOrDefault();
+
+                var exerciseColumn = "";
+                if (mostRecentStatistic != null)
+                {
+                    exerciseColumn = string.Format("{0} kg ({1})", mostRecentStatistic.Weight.ToString("0"),
+                        mostRecentStatistic.Date.ToString("dd-MM-yyy"));
+                }
+
+                traineeRow.Add(exerciseColumn);
+            }
+        }
+
+        private static void MapNameColumn(Trainee activeTrainee, ICollection<string> traineeRow)
+        {
+            var nameColumn = string.Format("{0} {1}", activeTrainee.FirstName, activeTrainee.LastName);
+            traineeRow.Add(nameColumn);
+        }
+
+        private static void MapEditColumn(Trainee activeTrainee, ICollection<string> traineeRow)
+        {
+            var editStatisticsColumn =
+                string.Format(
+                    "<button type='button' class='btn-link edit-statistics' data-trainee-id={0}><span class='glyphicon glyphicon-pencil'></span></button>",
+                    activeTrainee.Id);
+            traineeRow.Add(editStatisticsColumn);
         }
     }
 }

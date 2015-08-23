@@ -3,9 +3,11 @@
 namespace GymHub.Service
 {
     public interface ITraineeService
-    {
+    {       
         GetAllTraineesResponse GetAllTrainees(GetAllTraineesRequest request);
-        GetPagedTraineesResponse GetPagedTrainees(GetPagedTraineesRequest request);        
-    }   
-  
+        GetFilteredTraineesResponse GetFilteredTrainees(GetFilteredTraineesRequest request);
+        CheckInTraineeResponse CheckInTrainee(CheckInTraineeRequest request);
+        GetInactiveTraineesResponse GetInactiveTrainees(GetInactiveTraineesRequest request);
+    }
+
 }

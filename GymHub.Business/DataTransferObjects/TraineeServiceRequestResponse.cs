@@ -4,7 +4,7 @@ using GymHub.Models.Helpers;
 
 namespace GymHub.Service.DataTransferObjects
 {
-    public class GetPagedTraineesRequest
+    public class GetFilteredTraineesRequest
     {
         public int Start { get; set; }
         public int Length { get; set; }
@@ -12,15 +12,14 @@ namespace GymHub.Service.DataTransferObjects
         public int OrderByColumn { get; set; }
         public OrderDirection OrderDirection { get; set; }
 
-        public bool WithExercises { get; set; }
+        public bool WithExercisesOfTheDay { get; set; }
         public bool WithStatistics { get; set; }
     }
 
-    public class GetPagedTraineesResponse
+    public class GetFilteredTraineesResponse
     {
-        public IEnumerable<Trainee> PagedTrainees { get; set; }
-        public IEnumerable<Exercise> Exercises { get; set; }
-        public IEnumerable<TraineeStatistic> TraineeStatistics { get; set; }
+        public IEnumerable<Trainee> FilteredTrainees { get; set; }
+        public IEnumerable<Exercise> ExercisesOfTheDay { get; set; }
 
         public int RecordsTotal { get; set; }
         public int RecordsFiltered { get; set; }
@@ -34,5 +33,42 @@ namespace GymHub.Service.DataTransferObjects
     public class GetAllTraineesResponse
     {
         public IEnumerable<Trainee> Trainees { get; set; }
+    }
+
+    public class GetActiveTraineesRequest
+    {
+        public string IncludeProperties { get; set; }
+    }
+
+    public class GetActiveTraineesResponse
+    {
+        public IEnumerable<Trainee> Trainees { get; set; }
+    }
+
+    public class CheckInTraineeResponse
+    {
+
+    }
+
+    public class CheckInTraineeRequest
+    {
+        public int TraineeId { get; set; }
+    }
+
+    public class GetInactiveTraineesRequest
+    {
+
+    }
+
+    public class GetInactiveTraineesResponse
+    {
+        public IEnumerable<Trainee> InactiveTrainees { get; set; }
+    }
+
+    internal class FilterTraineesResponse
+    {
+        public IEnumerable<Trainee> PagedTrainees { get; set; }
+        public int PagedTraineesCount { get; set; }
+        public int ActiveTraineesCount { get; set; }
     }
 }

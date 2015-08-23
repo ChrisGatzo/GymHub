@@ -2,16 +2,16 @@
 
     $(document).ajaxStart(function () {
         if (window.IsAjaxLoaderEnabled) {
-            $('body').append('<div id="loader" class="ajax-loader-container">' +
-                '<div class="ajax-loader">' +
-                '</div>' +
-                '</div>');
+            $("body").append("<div id=\"loader\" class=\"ajax-loader-container\">" +
+                "<div class=\"ajax-loader\">" +
+                "</div>" +
+                "</div>");
             $("body").css("overflow", "hidden");
         }
     });
 
     $(document).ajaxStop(function () {
-        $('.ajax-loader-container').remove();
+        $(".ajax-loader-container").remove();
         $("body").css("overflow", "auto");
     });
 

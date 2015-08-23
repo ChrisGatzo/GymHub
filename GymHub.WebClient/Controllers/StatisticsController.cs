@@ -50,7 +50,7 @@ namespace GymHub.WebClient.Controllers
                 traineeStatisticViewModels.Add(traineeStatisticViewModel);
             }
 
-            ViewBag.TraineeName = response.Trainee.LastName + " " + response.Trainee.FirstName;
+            ViewBag.TraineeName = response.Trainee.FirstName + " " + response.Trainee.LastName;
             return PartialView(traineeStatisticViewModels);
         }
 

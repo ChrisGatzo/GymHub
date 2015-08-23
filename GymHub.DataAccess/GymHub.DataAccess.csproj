@@ -61,9 +61,11 @@
     <Compile Include="Repositories\ExerciseRepository.cs" />
     <Compile Include="Repositories\IExerciseRepository.cs" />
     <Compile Include="Repositories\IProgramRepository.cs" />
+    <Compile Include="Repositories\ITraineeCheckInRepository.cs" />
     <Compile Include="Repositories\ITraineeRepository.cs" />
     <Compile Include="Repositories\ITraineeStatisticsRepository.cs" />
     <Compile Include="Repositories\ProgramRepository.cs" />
+    <Compile Include="Repositories\TraineeCheckInRepository.cs" />
     <Compile Include="Repositories\TraineeRepository.cs" />
     <Compile Include="Repositories\TraineeStatisticsRepository.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />

@@ -61,11 +61,29 @@ namespace GymHub.WebClient.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Active Trainees.
+        /// </summary>
+        public static string ActiveTrainees {
+            get {
+                return ResourceManager.GetString("ActiveTrainees", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please select a file to upload.
         /// </summary>
         public static string CannotSubmitEmptyFile {
             get {
                 return ResourceManager.GetString("CannotSubmitEmptyFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Check In.
+        /// </summary>
+        public static string CheckIn {
+            get {
+                return ResourceManager.GetString("CheckIn", resourceCulture);
             }
         }
         
@@ -210,6 +228,24 @@ namespace GymHub.WebClient.Resources {
         public static string TodaysTraining {
             get {
                 return ResourceManager.GetString("TodaysTraining", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trainee checked in successfully.
+        /// </summary>
+        public static string TraineeCheckedInSuccessfully {
+            get {
+                return ResourceManager.GetString("TraineeCheckedInSuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trainee Check In.
+        /// </summary>
+        public static string TraineeCheckIn {
+            get {
+                return ResourceManager.GetString("TraineeCheckIn", resourceCulture);
             }
         }
         

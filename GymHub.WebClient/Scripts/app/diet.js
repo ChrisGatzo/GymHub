@@ -1,10 +1,10 @@
 ﻿var gymHub = gymHub || {};
 
 gymHub.diet = function () {
-    var $dietModal = $('#trainee-diet-modal');
+    var $dietModal = $("#trainee-diet-modal");
 
     var initDataTables = function () {
-        $('#trainees-diet-table').dataTable({
+        $("#trainees-diet-table").dataTable({
             "responsive": true,
             "columnDefs": [
                 {
@@ -21,25 +21,16 @@ gymHub.diet = function () {
         initDataTables();
     };
 
-    var editDiet = function ($buttonClicked) {
-        var traineeId = $buttonClicked.data('trainee-id');
-        gymHub.dataService.editDiet(traineeId, editDietCallback);
-    },
-    editDietCallback = function (response) {
+    var editDietCallback = function (response) {
         $dietModal.html(response);
-        $dietModal.modal('show');
+        $dietModal.modal("show");
+    },
+    editDiet = function ($buttonClicked) {
+        var traineeId = $buttonClicked.data("trainee-id");
+        gymHub.dataService.editDiet(traineeId, editDietCallback);
     };
 
-    var saveDiet = function () {
-        if ($('#attachment-file-input').val()) {
-            var $dietUploadForm = $('#diet-upload-form');
-            gymHub.dataService.uploadDiet($dietUploadForm, uploadOptions);
-            return false;
-        } else {
-            toastr.warning(window.dictionary["cannotSubmitEmptyFile"]);
-        }
-    },
-    uploadOptions = {
+    var uploadOptions = {
         success: function (response) {
             if (response.IsValid) {
                 toastr.success(response.Message);
@@ -48,8 +39,18 @@ gymHub.diet = function () {
                 toastr.warning(response.Message);
             }
 
-            $('#attachment-file-input').val('');
-            $('#Comment').val('');
+            $("#attachment-file-input").val("");
+            $("#Comment").val("");
+        }
+    };
+
+    var saveDiet = function () {
+        if ($("#attachment-file-input").val()) {
+            var $dietUploadForm = $("#diet-upload-form");
+            gymHub.dataService.uploadDiet($dietUploadForm, uploadOptions);
+            return false;
+        } else {
+            toastr.warning(window.dictionary["cannotSubmitEmptyFile"]);
         }
     };
 
@@ -66,12 +67,12 @@ $(function () {
 
     gymHub.diet.init();
 
-    $('#trainees-diet-table').on('click', '.edit-diet', function () {
+    $("#trainees-diet-table").on("click", ".edit-diet", function () {
         gymHub.diet.editDiet($(this));
     });
 
 
-    $('#trainee-diet-modal').on('click', '#save-diet', function () {
+    $("#trainee-diet-modal").on("click", "#save-diet", function () {
         gymHub.diet.saveDiet();
     });
 

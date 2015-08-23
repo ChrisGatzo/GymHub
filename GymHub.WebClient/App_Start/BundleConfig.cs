@@ -38,8 +38,11 @@ namespace GymHub.WebClient
                 "~/Scripts/app/stacktrace.js"
                 ));
 
-            bundles.Add(new ScriptBundle("~/bundles/workoutoftheday").Include(            
+            bundles.Add(new ScriptBundle("~/bundles/workoutoftheday").Include(
                 "~/Scripts/app/workout-of-the-day.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/traineecheckin").Include(
+                "~/Scripts/app/trainee-checkin.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/diet").Include(
                 "~/Scripts/app/diet.js"));

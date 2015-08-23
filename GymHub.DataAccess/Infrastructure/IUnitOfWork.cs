@@ -8,6 +8,7 @@ namespace GymHub.DataAccess.Infrastructure
         IExerciseRepository ExerciseRepository { get; }
         IProgramRepository ProgramRepository { get; }
         ITraineeStatisticsRepository TraineeStatisticsRepository { get; }
+        ITraineeCheckInRepository TraineeCheckInRepository { get; }
         void Save();
         void Dispose();
     }

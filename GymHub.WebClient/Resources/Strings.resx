@@ -120,6 +120,9 @@
   <data name="CannotSubmitEmptyFile" xml:space="preserve">
     <value>Please select a file to upload</value>
   </data>
+  <data name="CheckIn" xml:space="preserve">
+    <value>Check In</value>
+  </data>
   <data name="Close" xml:space="preserve">
     <value>Close</value>
   </data>
@@ -168,6 +171,12 @@
   <data name="TodaysTraining" xml:space="preserve">
     <value>Today's Training</value>
   </data>
+  <data name="TraineeCheckedInSuccessfully" xml:space="preserve">
+    <value>Trainee checked in successfully</value>
+  </data>
+  <data name="TraineeCheckIn" xml:space="preserve">
+    <value>Trainee Check In</value>
+  </data>
   <data name="TraineeExercises" xml:space="preserve">
     <value>Trainee Exercises</value>
   </data>
@@ -179,5 +188,8 @@
   </data>
   <data name="WorkoutOfTheDay" xml:space="preserve">
     <value>Workout Of The Day</value>
+  </data>
+  <data name="ActiveTrainees" xml:space="preserve">
+    <value>Active Trainees</value>
   </data>
 </root>

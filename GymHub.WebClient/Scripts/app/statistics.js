@@ -3,7 +3,7 @@
 gymHub.statistics = function () {
 
     var initDataTables = function () {
-        $('#trainees-statistics-table').dataTable({
+        $("#trainees-statistics-table").dataTable({
             "responsive": true,
             "columnDefs": [
                 {
