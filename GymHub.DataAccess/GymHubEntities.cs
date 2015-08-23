@@ -1,5 +1,6 @@
 ﻿using System.Data.Entity;
 using GymHub.Models.Domain;
+using GymHub.DataAccess.Migrations;
 
 namespace GymHub.DataAccess
 {
@@ -8,6 +9,7 @@ namespace GymHub.DataAccess
         public GymHubEntities()
             : base("GymHubEntities")
         {
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<GymHubEntities, Configuration>());
         }
 
         public DbSet<Exercise> Exercises { get; set; }
@@ -16,10 +18,6 @@ namespace GymHub.DataAccess
         public DbSet<Trainee> Trainees { get; set; }
         public DbSet<TraineeStatistic> TraineeStatistics { get; set; }
         public DbSet<TrainingSchedule> TrainingSchedules { get; set; }
-
-        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        //{
-
-        //}        
+        
     }
 }
