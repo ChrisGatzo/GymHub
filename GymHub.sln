@@ -18,6 +18,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymHub.Service", "GymHub.Bu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymHub.Models", "GymHub.Models\GymHub.Models.csproj", "{58456959-B75D-4484-A2AC-9DD6C35C3411}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymHub.WebApi", "GymHub.WebApi\GymHub.WebApi.csproj", "{79F42282-9BF6-485A-BF7D-7A555AAD70E0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,6 +42,10 @@ Global
 		{58456959-B75D-4484-A2AC-9DD6C35C3411}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{58456959-B75D-4484-A2AC-9DD6C35C3411}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{58456959-B75D-4484-A2AC-9DD6C35C3411}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79F42282-9BF6-485A-BF7D-7A555AAD70E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79F42282-9BF6-485A-BF7D-7A555AAD70E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79F42282-9BF6-485A-BF7D-7A555AAD70E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79F42282-9BF6-485A-BF7D-7A555AAD70E0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
