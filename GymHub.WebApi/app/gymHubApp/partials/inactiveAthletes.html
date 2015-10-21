@@ -1,0 +1,24 @@
+﻿<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Athlete Check In</h4>
+    </div>
+    <div class="modal-body">
+        <table id="inactive-users-table" class="table table-striped table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="ath in vm.inactiveAthletes" ng-click="vm.selectAthlete(ath.id)" ng-class="{ info: ath.id == vm.selectedAthlete}">
+                    <td>{{ ath.firstName + " " + ath.lastName }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.cancel()">Close</button>
+        <button type="button" class="btn btn-primary" id="checkin-athlete-btn" ng-click="vm.checkInAthlete()">Check In</button>
+    </div>
+</div>

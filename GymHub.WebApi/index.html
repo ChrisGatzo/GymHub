@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html ng-app="gymHubApp">
+<head>
+    <title>Gym Hub</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <!--<link href="Content/animations.css" rel="stylesheet" />-->
+    <!--<link href="Content/styles.css" rel="stylesheet" />-->
+</head>
+<body>
+    <header class="navbar navbar-inner navbar-fixed-top">
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="#" class="navbar-brand">Gym Hub</a>
+                </div>
+                <div class="navbar-collapse collapse" id="nav-collapse">
+                    <ul class="nav navbar-nav" data-menu-highlighter data-highlight-class-name="active">
+                        <li><a href="#/workoutoftheday">Workout of the day</a></li>
+                        <li><a href="#/statistics">Statistics</a></li>
+                        <li><a href="#/diet">Nutrition</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="slide-animation-container">
+            <div class="slide-animation-container">
+                <div ng-view id="ng-view" class="slide-animation"></div>
+            </div>
+        </div>
+
+        <hr />
+        <footer>
+            <p>&copy; 2015 - Gym Hub</p>
+        </footer>
+    </div>
+
+    <!--<div wc-overlay wc-overlay-delay="300">
+            <br /><img src="Content/images/spinner.gif" />&nbsp;&nbsp;Loading
+        </div>-->
+    <!-- 3rd party libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-route.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-animate.min.js"></script>
+    <script src="Scripts/angular-ui/ui-bootstrap-tpls.js"></script>
+    <script src="Scripts/angular-ui/ui-bootstrap.js"></script>
+    <!--<script src="Scripts/tweenMax.min.js"></script>-->
+    <!-- Custom scripts -->
+    <script src="app/gymHubApp/app.js"></script>
+    <script src="app/gymHubApp/directives/menuHighlighter.js"></script>
+    <script src="app/gymHubApp/services/dataService.js"></script>
+    <script src="app/gymHubApp/services/modalService.js"></script>
+    <script src="app/gymHubApp/controllers/workoutOfTheDay/workoutOfTheDayController.js"></script>
+    <script src="app/gymHubApp/controllers/workoutOfTheDay/inactiveAthletesController.js"></script>
+
+    <!--<script src="app/wc.directives/directives/menuHighlighter.js"></script>-->
+    <!-- <script src="app/wc.directives/directives/wcOverlay.js"></script>
+        <script src="app/wc.directives/directives/menuHighlighter.js"></script>
+        <script src="app/customersApp/app.js"></script>
+        <script src="app/customersApp/animations/listAnimations.js"></script>
+        <script src="app/customersApp/directives/wcUnique.js"></script>
+        <script src="app/customersApp/filters/nameCityStateFilter.js"></script>
+        <script src="app/customersApp/filters/nameProductFilter.js"></script>
+        <script src="app/customersApp/services/config.js"></script>
+        <script src="app/customersApp/services/authService.js"></script>
+        <script src="app/customersApp/services/httpInterceptors.js"></script>
+        <script src="app/customersApp/services/customersBreezeService.js"></script>
+        <script src="app/customersApp/services/customersService.js"></script>
+        <script src="app/customersApp/services/dataService.js"></script>
+        <script src="app/customersApp/services/modalService.js"></script>
+        <script src="app/customersApp/controllers/customers/customerEditController.js"></script>
+        <script src="app/customersApp/controllers/customers/customerOrdersController.js"></script>
+        <script src="app/customersApp/controllers/customers/customersController.js"></script>
+        <script src="app/customersApp/controllers/orders/orderChildController.js"></script>
+        <script src="app/customersApp/controllers/orders/ordersController.js"></script>
+        <script src="app/customersApp/controllers/aboutController.js"></script>
+        <script src="app/customersApp/controllers/navbarController.js"></script>
+        <script src="app/customersApp/controllers/loginController.js"></script>-->
+</body>
+</html>
+
