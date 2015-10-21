@@ -14,3 +14,4 @@ Demonstrated technologies and patterns used in this project<br/>
 7) SignalR<br/>
 8) Web Api<br/>
 9) Responsive web interface<br/>
+10) Angular JS<br/>
